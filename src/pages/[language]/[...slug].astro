@@ -1,0 +1,234 @@
+---
+import { getCollection, render } from 'astro:content'
+import { ClientRouter } from 'astro:transitions'
+import Search from 'astro-pagefind/components/Search.astro'
+import { buildNav, LANGUAGES, pageTitle, type Language } from '../../nav'
+import { pageUrl } from '../../markdown-links.mjs'
+import { version } from '../../../package.json'
+import '../../styles.css'
+
+export async function getStaticPaths() {
+  const paths = []
+  for (const language of Object.keys(LANGUAGES) as Language[]) {
+    const entries = await getCollection(language)
+    const nav = await buildNav(language)
+    const other = language === 'typescript' ? 'dotnet' : 'typescript'
+    const twins = new Set((await getCollection(other)).map((entry) => entry.id))
+    for (const entry of entries) {
+      paths.push({
+        params: { language, slug: entry.id === 'README' ? undefined : entry.id },
+        props: { language, entry, nav, twin: pageUrl(other, twins.has(entry.id) ? entry.id : 'README') },
+      })
+    }
+  }
+  return paths
+}
+
+const { language, entry, nav, twin } = Astro.props
+const { Content } = await render(entry)
+const languageName = LANGUAGES[language as Language]
+const title = pageTitle(entry.body, entry.id)
+const current = pageUrl(language, entry.id)
+// Same order as the website's switcher: .NET, then TypeScript.
+const switcher = (['dotnet', 'typescript'] as Language[]).map((key) => ({
+  key,
+  name: LANGUAGES[key],
+  href: key === language ? current : twin,
+  active: key === language,
+}))
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title} · BonniePDF {languageName} API</title>
+    <link rel="icon" type="image/svg+xml" href="/bonniepdf-logo.svg" />
+    <script is:inline>
+      // Applies the theme before first paint: the reader's saved choice (same key as the
+      // website), else the system setting. data-pf-theme themes Pagefind's search box.
+      // Navigation swaps <html>'s attributes for the new page's, so apply it there too.
+      ;(() => {
+      const applyTheme = (doc) => {
+        let theme = null
+        try {
+          theme = localStorage.getItem('bonniepdf-theme')
+        } catch {}
+        if (theme !== 'light' && theme !== 'dark') {
+          theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        }
+        doc.documentElement.dataset.theme = theme
+        doc.documentElement.dataset.pfTheme = theme
+      }
+      applyTheme(document)
+      document.addEventListener('astro:before-swap', (event) => applyTheme(event.newDocument))
+      })()
+    </script>
+    <!-- Swaps pages in place instead of reloading, so moving between pages does not flash. -->
+    <ClientRouter />
+  </head>
+  <body>
+    <header class="top">
+      <button class="menu-toggle" type="button" aria-controls="sidebar" aria-expanded="false" aria-label="Show navigation">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"></path>
+        </svg>
+      </button>
+      <a class="brand" href={pageUrl(language, 'README')}>
+        <img src="/bonniepdf-logo.svg" alt="" width="28" height="28" />
+        BonniePDF <span>API reference</span>
+      </a>
+      <div class="search" transition:persist="search"><Search searchboxOptions={{ placeholder: 'Search' }} /></div>
+      <div class="nav-icons">
+        <button class="icon-button theme-toggle" type="button" aria-label="Switch theme">
+          <svg class="theme-icon-light" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-icon-dark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+          </svg>
+        </button>
+        <a class="icon-button" href="https://github.com/bonniepdf/" target="_blank" rel="noopener noreferrer" aria-label="View BonniePDF on GitHub (opens in new tab)">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path>
+          </svg>
+        </a>
+      </div>
+    </header>
+
+    <div class="shell">
+      <div class="sidebar-backdrop" hidden></div>
+      <aside class="sidebar" id="sidebar" aria-label={`${languageName} types`} data-language={language}>
+        <nav class="lang-switcher" aria-label="Select language">
+          {
+            switcher.map((option) => (
+              <a href={option.href} class:list={['lang-option', { active: option.active }]} aria-current={option.active ? 'page' : undefined}>
+                {option.name}
+              </a>
+            ))
+          }
+        </nav>
+        <nav class="sidebar-nav">
+          <a class="overview" href={pageUrl(language, 'README')} aria-current={entry.id === 'README' ? 'page' : undefined}>
+            Overview
+          </a>
+          {
+            nav.map((group) => (
+              <details open={group.items.some((item) => pageUrl(language, item.id) === current)}>
+                <summary>{group.title}</summary>
+                <ul>
+                  {group.items.map((item) => (
+                    <li>
+                      <a href={pageUrl(language, item.id)} aria-current={pageUrl(language, item.id) === current ? 'page' : undefined}>
+                        {item.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))
+          }
+        </nav>
+      </aside>
+
+      <div class="page">
+        <main class="content" data-pagefind-body data-pagefind-meta={`title:${title} (${languageName})`}>
+          <Content />
+        </main>
+        <footer class="footer">
+          <span>BonniePDF API Documentation {version}</span>
+          <a href="https://bonniepdf.dev">bonniepdf.dev</a>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      // This module runs once; ClientRouter then swaps the page in place. The sidebar
+      // is rendered afresh for every page, so its listeners are bound on each page load.
+      const parts = () => ({
+        sidebar: document.getElementById('sidebar')!,
+        toggle: document.querySelector<HTMLButtonElement>('.menu-toggle')!,
+        backdrop: document.querySelector<HTMLElement>('.sidebar-backdrop')!,
+      })
+
+      const setOpen = (open: boolean) => {
+        const { sidebar, toggle, backdrop } = parts()
+        sidebar.classList.toggle('is-open', open)
+        backdrop.hidden = !open
+        toggle.setAttribute('aria-expanded', String(open))
+        toggle.setAttribute('aria-label', open ? 'Hide navigation' : 'Show navigation')
+      }
+
+      // Theme toggle: delegated, so it keeps working after each page swap.
+      let themeTimer = 0
+      const syncThemeLabel = () => {
+        const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'
+        document.querySelector('.theme-toggle')?.setAttribute('aria-label', `Switch to ${next} theme`)
+      }
+      document.addEventListener('click', (event) => {
+        if (!(event.target as Element).closest?.('.theme-toggle')) return
+        const root = document.documentElement
+        const theme = root.dataset.theme === 'dark' ? 'light' : 'dark'
+        root.classList.add('no-theme-transition')
+        root.dataset.theme = theme
+        root.dataset.pfTheme = theme
+        try {
+          localStorage.setItem('bonniepdf-theme', theme)
+        } catch {
+          /* Applies without being remembered. */
+        }
+        clearTimeout(themeTimer)
+        themeTimer = window.setTimeout(() => root.classList.remove('no-theme-transition'), 200)
+        syncThemeLabel()
+      })
+      document.addEventListener('astro:page-load', syncThemeLabel)
+
+      document.addEventListener('keydown', (event) => {
+        const { sidebar, toggle } = parts()
+        if (event.key === 'Escape' && sidebar.classList.contains('is-open')) {
+          setOpen(false)
+          toggle.focus()
+        }
+      })
+
+      // Carry the sidebar across a navigation: keep its scroll position and the groups the
+      // reader opened, as long as the new page lists the same language.
+      let carriedScroll: number | undefined
+      document.addEventListener('astro:before-swap', (event) => {
+        const { sidebar } = parts()
+        const next = event.newDocument.getElementById('sidebar')
+        carriedScroll = undefined
+        if (!next || next.dataset.language !== sidebar.dataset.language) return
+        const open = [...sidebar.querySelectorAll('details')].map((group) => group.open)
+        next.querySelectorAll('details').forEach((group, index) => {
+          if (open[index]) group.open = true
+        })
+        carriedScroll = sidebar.scrollTop
+      })
+
+      // Restore the scroll position, then bring the current page into view if it is outside
+      // the visible part of the sidebar (a first visit, or after switching language).
+      const placeSidebar = () => {
+        const { sidebar } = parts()
+        if (carriedScroll !== undefined) sidebar.scrollTop = carriedScroll
+        const current = sidebar.querySelector<HTMLElement>('.sidebar-nav [aria-current="page"]')
+        if (!current) return
+        const top = current.offsetTop - sidebar.scrollTop
+        if (top < 0 || top + current.offsetHeight > sidebar.clientHeight) {
+          sidebar.scrollTop = current.offsetTop - sidebar.clientHeight / 2
+        }
+      }
+      // After a swap, before the new page is painted.
+      document.addEventListener('astro:after-swap', placeSidebar)
+      placeSidebar()
+
+      document.addEventListener('astro:page-load', () => {
+        const { sidebar, toggle, backdrop } = parts()
+        toggle.addEventListener('click', () => setOpen(!sidebar.classList.contains('is-open')))
+        backdrop.addEventListener('click', () => setOpen(false))
+      })
+    </script>
+  </body>
+</html>
