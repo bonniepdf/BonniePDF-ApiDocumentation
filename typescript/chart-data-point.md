@@ -14,10 +14,13 @@ new ChartDataPoint(options?: ChartDataPointOptions)
 
 ## Properties
 
-- [`formattedValue`](#formattedvalue): Gets the formatted value string based on Value and LabelFormat.
+- [`formattedValue`](#formattedvalue): Gets the formatted value string based on value and labelFormat.
+- [`kind`](#kind): Point role for WaterfallChart: `delta` (default), `total`, or `subtotal`.
 - [`label`](#label): Category label for the point, shown on the axis or in the legend.
-- [`labelFormat`](#labelformat): Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`.
-- [`value`](#value): Numeric value of the point.
+- [`labelFormat`](#labelformat): Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`.
+- [`size`](#size): Positive bubble size magnitude for ScatterChart; ignored by other charts.
+- [`value`](#value): Numeric value of the point (optional for WaterfallChart `total`/`subtotal` points).
+- [`x`](#x): Continuous X coordinate for ScatterChart; ignored by categorical charts.
 
 ### `formattedValue`
 
@@ -27,7 +30,15 @@ readonly formattedValue: string
 
 *read-only*
 
-Gets the formatted value string based on Value and LabelFormat.
+Gets the formatted value string based on value and labelFormat.
+
+### `kind`
+
+```typescript
+kind: ChartDataPointKind
+```
+
+Point role for WaterfallChart: `delta` (default), `total`, or `subtotal`.
 
 ### `label`
 
@@ -55,7 +66,7 @@ p.label = label;
 labelFormat: string
 ```
 
-Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
+Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
 
 Example, from `code-recipes/comparison-charts/bar-chart`:
 
@@ -69,13 +80,21 @@ Example, from `code-recipes/compliance-archival/attached-data`:
 point.labelFormat = 'N0';
 ```
 
+### `size`
+
+```typescript
+size: number | undefined
+```
+
+Positive bubble size magnitude for ScatterChart; ignored by other charts.
+
 ### `value`
 
 ```typescript
 value: number
 ```
 
-Numeric value of the point.
+Numeric value of the point (optional for WaterfallChart `total`/`subtotal` points).
 
 Example, from `code-recipes/comparison-charts/horizontal-bar-chart`:
 
@@ -88,3 +107,11 @@ Example, from `code-recipes/comparison-charts/bar-chart`:
 ```typescript
 p.value = values[i];
 ```
+
+### `x`
+
+```typescript
+x: number | undefined
+```
+
+Continuous X coordinate for ScatterChart; ignored by categorical charts.

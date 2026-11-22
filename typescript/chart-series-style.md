@@ -14,11 +14,33 @@ new ChartSeriesStyle(options?: ChartSeriesStyleOptions)
 
 ## Properties
 
+- [`curve`](#curve): Optional curve interpolation override for this series (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
+- [`dashPattern`](#dashpattern): Optional alternating dash and gap lengths in points for line strokes.
 - [`fillOpacity`](#fillopacity): Fill opacity for Area charts (0.0 to 1.0, default: 0.3f).
 - [`lineWidth`](#linewidth): Line thickness for this series.
+- [`markerFill`](#markerfill): Optional marker fill style override (`solid`, `hollow`).
+- [`markerHaloWidth`](#markerhalowidth): Optional outer halo ring width around markers.
 - [`markerRadius`](#markerradius): Marker radius for Line, Lollipop, and DotPlot charts (default: 5f).
-- [`showMarkers`](#showmarkers): Whether to show circular markers at data points in Line charts (default: true).
+- [`markerShape`](#markershape): Optional marker shape override (`circle`, `square`, `diamond`, `triangle`).
+- [`pattern`](#pattern): Optional vector hatch/dot pattern fill for monochrome print accessibility.
+- [`showMarkers`](#showmarkers): Whether to show markers at data points in Line charts (default: true).
 - [`stemWidth`](#stemwidth): Stem width for Lollipop charts (default: 2f).
+
+### `curve`
+
+```typescript
+curve: ChartCurveMode | undefined
+```
+
+Optional curve interpolation override for this series (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
+
+### `dashPattern`
+
+```typescript
+dashPattern: readonly number[] | undefined
+```
+
+Optional alternating dash and gap lengths in points for line strokes.
 
 ### `fillOpacity`
 
@@ -36,7 +58,21 @@ lineWidth: number
 
 Line thickness for this series.
 
-Accepts a length: a number of points, `'0.5mm'`, or `{ value, unit }`.
+### `markerFill`
+
+```typescript
+markerFill: ChartMarkerFill | undefined
+```
+
+Optional marker fill style override (`solid`, `hollow`).
+
+### `markerHaloWidth`
+
+```typescript
+markerHaloWidth: number | undefined
+```
+
+Optional outer halo ring width around markers.
 
 ### `markerRadius`
 
@@ -46,7 +82,21 @@ markerRadius: number
 
 Marker radius for Line, Lollipop, and DotPlot charts (default: 5f).
 
-Accepts a length: a number of points, `'2mm'`, or `{ value, unit }`.
+### `markerShape`
+
+```typescript
+markerShape: ChartMarkerShape | undefined
+```
+
+Optional marker shape override (`circle`, `square`, `diamond`, `triangle`).
+
+### `pattern`
+
+```typescript
+pattern: ChartPatternKind | undefined
+```
+
+Optional vector hatch/dot pattern fill for monochrome print accessibility.
 
 ### `showMarkers`
 
@@ -54,7 +104,7 @@ Accepts a length: a number of points, `'2mm'`, or `{ value, unit }`.
 showMarkers: boolean
 ```
 
-Whether to show circular markers at data points in Line charts (default: true).
+Whether to show markers at data points in Line charts (default: true).
 
 ### `stemWidth`
 
@@ -63,5 +113,3 @@ stemWidth: number
 ```
 
 Stem width for Lollipop charts (default: 2f).
-
-Accepts a length: a number of points, `'0.5mm'`, or `{ value, unit }`.

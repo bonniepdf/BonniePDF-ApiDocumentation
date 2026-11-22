@@ -14,14 +14,20 @@ new PieChart(options?: PieChartOptions)
 
 ## Properties
 
-- [`colors`](#colors): Custom colors to use for the pie slices.
-- [`isDonut`](#isdonut): Whether to render as a donut chart with a transparent center hole.
-- [`showLegend`](#showlegend): Whether to show the legend.
-- [`showTotal`](#showtotal): Whether to show the total value as a summary row below the legend items.
-- [`sliceGradient`](#slicegradient): Fill each slice with a gradient from a lighter tint of its colour at the centre side to its own colour at the rim.
-- [`totalLabel`](#totallabel): Label prefix for the total row in the legend (e.g. "Total").
-- [`totalPosition`](#totalposition): Where the total is shown: `'legend'` (default), as a row below the legend items, or `'center'`, as a large figure with `totalLabel` beneath it in the donut hole, which then widens to fit.
-- [`totalValueFormat`](#totalvalueformat): Number format for the total: `G` (default), `F<n>`, `N<n>` or `P<n>`.
+- [`colors`](#colors): Optional custom hex colour palette cycled across slices.
+- [`donutHoleRatio`](#donutholeratio): Optional explicit inner/outer radius ratio (`0..0.85`) when `isDonut` is true.
+- [`isDonut`](#isdonut): Whether to draw a donut ring with a hollow centre instead of a filled pie.
+- [`legendFormat`](#legendformat): Format of legend rows (`labelValue`, `labelPercent`, `labelValuePercent`, `labelOnly`).
+- [`percentFormat`](#percentformat): Percentage format when `legendFormat` or `sliceLabelMode` displays percentages (default `F0`).
+- [`showLegend`](#showlegend): Whether to display the legend beside the chart.
+- [`showTotal`](#showtotal): Whether to display the sum of all slice values.
+- [`sliceBorderWidth`](#sliceborderwidth): Optional background-coloured separator stroke width between slices in points.
+- [`sliceGradient`](#slicegradient): Whether to shade each slice with a subtle tonal gradient.
+- [`sliceLabelMode`](#slicelabelmode): Direct slice label placement (`none`, `inside`, or `callout`).
+- [`totalLabel`](#totallabel): Label displayed beside or above the total value.
+- [`totalPosition`](#totalposition): Where to render the total (`legend` or donut `center`).
+- [`totalValueFormat`](#totalvalueformat): Optional number format for the total value.
+- [`valueFormat`](#valueformat): Optional number format for legend and callout slice values.
 
 ### `colors`
 
@@ -29,7 +35,7 @@ new PieChart(options?: PieChartOptions)
 colors: string[] | undefined
 ```
 
-Custom colors to use for the pie slices. If null, uses the default color palette.
+Optional custom hex colour palette cycled across slices.
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -43,13 +49,21 @@ Example, from `industry-templates/finance-reporting/annual-report-geometric-cove
 chart.colors = colors;
 ```
 
+### `donutHoleRatio`
+
+```typescript
+donutHoleRatio: number | undefined
+```
+
+Optional explicit inner/outer radius ratio (`0..0.85`) when `isDonut` is true.
+
 ### `isDonut`
 
 ```typescript
 isDonut: boolean
 ```
 
-Whether to render as a donut chart with a transparent center hole. Default is true.
+Whether to draw a donut ring with a hollow centre instead of a filled pie.
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -63,13 +77,29 @@ Example, from `code-recipes/comparison-charts/chart-showcase`:
 pieChart9.isDonut = true;
 ```
 
+### `legendFormat`
+
+```typescript
+legendFormat: PieLegendFormat
+```
+
+Format of legend rows (`labelValue`, `labelPercent`, `labelValuePercent`, `labelOnly`).
+
+### `percentFormat`
+
+```typescript
+percentFormat: string
+```
+
+Percentage format when `legendFormat` or `sliceLabelMode` displays percentages (default `F0`).
+
 ### `showLegend`
 
 ```typescript
 showLegend: boolean
 ```
 
-Whether to show the legend. Default is true.
+Whether to display the legend beside the chart.
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -89,7 +119,7 @@ pieChart9.showLegend = true;
 showTotal: boolean
 ```
 
-Whether to show the total value as a summary row below the legend items. Default is true.
+Whether to display the sum of all slice values.
 
 Example, from `industry-templates/finance-reporting/financial-dashboard`:
 
@@ -97,13 +127,29 @@ Example, from `industry-templates/finance-reporting/financial-dashboard`:
 pieChart4.showTotal = false;
 ```
 
+### `sliceBorderWidth`
+
+```typescript
+sliceBorderWidth: number
+```
+
+Optional background-coloured separator stroke width between slices in points.
+
 ### `sliceGradient`
 
 ```typescript
 sliceGradient: boolean
 ```
 
-Fill each slice with a gradient from a lighter tint of its colour at the centre side to its own colour at the rim. Slice colours must be opaque. Default is false.
+Whether to shade each slice with a subtle tonal gradient.
+
+### `sliceLabelMode`
+
+```typescript
+sliceLabelMode: PieSliceLabelMode
+```
+
+Direct slice label placement (`none`, `inside`, or `callout`).
 
 ### `totalLabel`
 
@@ -111,7 +157,7 @@ Fill each slice with a gradient from a lighter tint of its colour at the centre 
 totalLabel: string
 ```
 
-Label prefix for the total row in the legend (e.g. "Total"). Default is "Total".
+Label displayed beside or above the total value.
 
 Example, from `industry-templates/finance-reporting/annual-report-geometric-cover`:
 
@@ -131,7 +177,7 @@ chart.totalLabel = 'Total revenue (£)';
 totalPosition: "center" | "legend"
 ```
 
-Where the total is shown: `'legend'` (default), as a row below the legend items, or `'center'`, as a large figure with `totalLabel` beneath it in the donut hole, which then widens to fit. A full pie has no hole, so it keeps the total in the legend.
+Where to render the total (`legend` or donut `center`).
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -145,7 +191,7 @@ chart.totalPosition = 'center';
 totalValueFormat: string | undefined
 ```
 
-Number format for the total: `G` (default), `F<n>`, `N<n>` or `P<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
+Optional number format for the total value.
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -158,3 +204,11 @@ Example, from `code-recipes/comparison-charts/chart-showcase`:
 ```typescript
 pieChart9.totalValueFormat = 'N0';
 ```
+
+### `valueFormat`
+
+```typescript
+valueFormat: string | undefined
+```
+
+Optional number format for legend and callout slice values.

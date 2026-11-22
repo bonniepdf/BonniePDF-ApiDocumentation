@@ -14,8 +14,11 @@ new DotPlotChart(options?: DotPlotChartOptions)
 
 ## Properties
 
-- [`defaultDotRadius`](#defaultdotradius): Default dot radius for all series (can be overridden per series via Style).
-- [`dotColor`](#dotcolor): Dot colour.
+- [`defaultDotRadius`](#defaultdotradius): Default radius of plotted dots in points.
+- [`defaultMarkerFill`](#defaultmarkerfill): Default marker fill mode (`solid` or `hollow`).
+- [`defaultMarkerHaloWidth`](#defaultmarkerhalowidth): Default background-coloured halo width around dots in points.
+- [`defaultMarkerShape`](#defaultmarkershape): Default geometric marker shape for plotted dots.
+- [`dotColor`](#dotcolor): Default dot colour for series without an explicit colour.
 
 ### `defaultDotRadius`
 
@@ -23,7 +26,31 @@ new DotPlotChart(options?: DotPlotChartOptions)
 defaultDotRadius: number
 ```
 
-Default dot radius for all series (can be overridden per series via Style).
+Default radius of plotted dots in points.
+
+### `defaultMarkerFill`
+
+```typescript
+defaultMarkerFill: ChartMarkerFill
+```
+
+Default marker fill mode (`solid` or `hollow`).
+
+### `defaultMarkerHaloWidth`
+
+```typescript
+defaultMarkerHaloWidth: number
+```
+
+Default background-coloured halo width around dots in points.
+
+### `defaultMarkerShape`
+
+```typescript
+defaultMarkerShape: ChartMarkerShape
+```
+
+Default geometric marker shape for plotted dots.
 
 ### `dotColor`
 
@@ -31,7 +58,7 @@ Default dot radius for all series (can be overridden per series via Style).
 dotColor: Color
 ```
 
-Dot colour. Accepts a palette token or hex.
+Default dot colour for series without an explicit colour.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 

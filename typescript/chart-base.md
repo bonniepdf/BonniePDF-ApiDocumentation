@@ -15,16 +15,23 @@ new ChartBase()
 ## Properties
 
 - [`altText`](#alttext): Alternate text used when the document is generated as PDF/UA-1.
+- [`autoLayout`](#autolayout): Enable content-aware dynamic margins based on measured text bounds.
 - [`backgroundColor`](#backgroundcolor): Background fill.
+- [`borderColor`](#bordercolor): Optional card border colour.
+- [`borderRadius`](#borderradius): Optional card border corner radius in points.
+- [`borderWidth`](#borderwidth): Optional card border stroke width in points.
+- [`caption`](#caption): Optional source or footnote line drawn at the bottom-left of the chart.
 - [`data`](#data): Data rendered by this chart when it is used as a document element.
-- [`height`](#height): Height of the chart canvas in points Accepts a length: a number of points, `'12cm'`, or `{ value, unit }`.
+- [`height`](#height): Chart height in points (default 450).
+- [`inheritDocumentFont`](#inheritdocumentfont): When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 - [`isDecorative`](#isdecorative): Marks the chart as decorative even when altText is set.
 - [`semanticRole`](#semanticrole): The PDF structure role this element claims (e.g. `SemanticRole.H1`, `SemanticRole.P`, `SemanticRole.Figure`).
 - [`stretchToFit`](#stretchtofit): When true, the chart will stretch to fill the container width.
-- [`svgShapeRendering`](#svgshaperendering): Preferred root `shape-rendering` for standalone SVG export (`*`).
-- [`theme`](#theme): Appearance preset.
+- [`subtitle`](#subtitle): Optional subtitle drawn beneath the title.
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
+- [`theme`](#theme): Appearance preset (`legacy`, `modern`, `dark`, `print`) or composable theme object.
 - [`title`](#title): Visible title drawn inside the chart.
-- [`width`](#width): Width of the chart canvas in points Accepts a length: a number of points, `'20cm'`, or `{ value, unit }`.
+- [`width`](#width): Chart width in points (default 800).
 
 ### `altText`
 
@@ -34,13 +41,53 @@ altText: string
 
 Alternate text used when the document is generated as PDF/UA-1.
 
+### `autoLayout`
+
+```typescript
+autoLayout: boolean
+```
+
+Enable content-aware dynamic margins based on measured text bounds.
+
 ### `backgroundColor`
 
 ```typescript
 backgroundColor: Color | undefined
 ```
 
-Background fill. Accepts a palette token or hex; undefined = transparent.
+Background fill. Accepts a palette token or hex; undefined = transparent (or theme background).
+
+### `borderColor`
+
+```typescript
+borderColor: Color | undefined
+```
+
+Optional card border colour.
+
+### `borderRadius`
+
+```typescript
+borderRadius: number
+```
+
+Optional card border corner radius in points.
+
+### `borderWidth`
+
+```typescript
+borderWidth: number
+```
+
+Optional card border stroke width in points.
+
+### `caption`
+
+```typescript
+caption: string
+```
+
+Optional source or footnote line drawn at the bottom-left of the chart.
 
 ### `data`
 
@@ -56,9 +103,15 @@ Data rendered by this chart when it is used as a document element.
 height: number
 ```
 
-Height of the chart canvas in points
+Chart height in points (default 450).
 
-Accepts a length: a number of points, `'12cm'`, or `{ value, unit }`.
+### `inheritDocumentFont`
+
+```typescript
+inheritDocumentFont: boolean
+```
+
+When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 
 ### `isDecorative`
 
@@ -86,21 +139,29 @@ stretchToFit: boolean
 
 When true, the chart will stretch to fill the container width. The width will be set automatically by the document layout engine.
 
+### `subtitle`
+
+```typescript
+subtitle: string
+```
+
+Optional subtitle drawn beneath the title.
+
 ### `svgShapeRendering`
 
 ```typescript
 svgShapeRendering: "crispEdges" | "auto" | undefined
 ```
 
-Preferred root `shape-rendering` for standalone SVG export (`*`). `undefined` (the default) keeps the SVG default antialiasing, which is required for charts with diagonal lines, arcs, or circles. Axis-aligned charts (bar, grouped bar) override this to `'crispEdges'` so their bars and gridlines snap to the pixel grid instead of softening into blurred edges. Text is governed by `text-rendering`, so it is unaffected either way.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `theme`
 
 ```typescript
-theme: "legacy" | "modern"
+theme: ChartThemeInput
 ```
 
-Appearance preset. Legacy preserves existing output; modern is opt-in.
+Appearance preset (`legacy`, `modern`, `dark`, `print`) or composable theme object.
 
 ### `title`
 
@@ -116,13 +177,11 @@ Visible title drawn inside the chart.
 width: number
 ```
 
-Width of the chart canvas in points
-
-Accepts a length: a number of points, `'20cm'`, or `{ value, unit }`.
+Chart width in points (default 800).
 
 ## Methods
 
-- [`draw`](#draw): Draws the chart to the specified canvas.
+- [`draw`](#draw): Renders the chart onto the given vector sink using `data` (defaults to `this.data`).
 
 ### `draw`
 
@@ -130,7 +189,4 @@ Accepts a length: a number of points, `'20cm'`, or `{ value, unit }`.
 draw(canvas: ICanvas, data?: ChartData): void
 ```
 
-Draws the chart to the specified canvas. This method handles the common setup (background, title) and calls the abstract DrawContent method.
-
-- `canvas`: The canvas to draw to
-- `data`: The chart data to render
+Renders the chart onto the given vector sink using `data` (defaults to `this.data`).

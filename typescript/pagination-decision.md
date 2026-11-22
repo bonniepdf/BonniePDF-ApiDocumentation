@@ -19,6 +19,6 @@ type PaginationDecision = 'render'
 
 ## Values
 
-- `"render"`
 - `"wrap"`
+- `"render"`
 - `"skip"`

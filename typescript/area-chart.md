@@ -14,11 +14,13 @@ new AreaChart(options?: AreaChartOptions)
 
 ## Properties
 
-- [`areaColor`](#areacolor): Area colour.
-- [`defaultFillOpacity`](#defaultfillopacity): Default fill opacity for all series (can be overridden per series via Style).
-- [`defaultLineWidth`](#defaultlinewidth): Default line width for all series (can be overridden per series via Style).
-- [`fillOpacity`](#fillopacity): Opacity for the area fill (backward compatibility for single-series charts).
-- [`lineWidth`](#linewidth): Width of the line stroke (backward compatibility for single-series charts).
+- [`areaColor`](#areacolor): Default colour for series without an explicit colour.
+- [`areaGradient`](#areagradient): Vertical (or horizontal) fade gradient from series colour to near-transparent at the baseline.
+- [`curve`](#curve): Curve interpolation mode: `linear` (default), `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`.
+- [`defaultFillOpacity`](#defaultfillopacity): Default fill opacity for series without an explicit opacity (`0..1`).
+- [`defaultLineWidth`](#defaultlinewidth): Default stroke width for series boundary lines in points.
+- [`fillOpacity`](#fillopacity): Fill opacity for area polygons (`0..1`).
+- [`lineWidth`](#linewidth): Stroke width of the upper area boundary line in points.
 
 ### `areaColor`
 
@@ -26,7 +28,7 @@ new AreaChart(options?: AreaChartOptions)
 areaColor: Color
 ```
 
-Area colour. Accepts a palette token or hex.
+Default colour for series without an explicit colour.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
@@ -40,13 +42,29 @@ Example, from `code-recipes/trend-charts/area-chart`:
 chart.areaColor = Color.fromHex(C_PURPLE);
 ```
 
+### `areaGradient`
+
+```typescript
+areaGradient: boolean
+```
+
+Vertical (or horizontal) fade gradient from series colour to near-transparent at the baseline.
+
+### `curve`
+
+```typescript
+curve: ChartCurveMode
+```
+
+Curve interpolation mode: `linear` (default), `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`.
+
 ### `defaultFillOpacity`
 
 ```typescript
 defaultFillOpacity: number
 ```
 
-Default fill opacity for all series (can be overridden per series via Style).
+Default fill opacity for series without an explicit opacity (`0..1`).
 
 ### `defaultLineWidth`
 
@@ -54,7 +72,7 @@ Default fill opacity for all series (can be overridden per series via Style).
 defaultLineWidth: number
 ```
 
-Default line width for all series (can be overridden per series via Style).
+Default stroke width for series boundary lines in points.
 
 ### `fillOpacity`
 
@@ -62,7 +80,7 @@ Default line width for all series (can be overridden per series via Style).
 fillOpacity: number
 ```
 
-Opacity for the area fill (backward compatibility for single-series charts).
+Fill opacity for area polygons (`0..1`).
 
 Example, from `code-recipes/trend-charts/area-chart`:
 
@@ -82,9 +100,7 @@ areaChart6.fillOpacity = 0.3;
 lineWidth: number
 ```
 
-Width of the line stroke (backward compatibility for single-series charts).
-
-Accepts a length: a number of points, `'0.5mm'`, or `{ value, unit }`.
+Stroke width of the upper area boundary line in points.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 

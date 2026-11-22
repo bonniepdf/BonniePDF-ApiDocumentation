@@ -7,23 +7,51 @@ Options for [`ChartSeriesStyle`](chart-series-style.md).
 Import from `@bonniepdf/core`.
 
 ```typescript
-type ChartSeriesStyleOptions = Partial<Omit<Pick<ChartSeriesStyle, (typeof CHART_SERIES_STYLE_OPTION_KEYS)[number]>, 'lineWidth' | 'markerRadius' | 'stemWidth'>> & {
+type ChartSeriesStyleOptions = Partial<Omit<Pick<ChartSeriesStyle, (typeof CHART_SERIES_STYLE_OPTION_KEYS)[number]>, 'lineWidth' | 'markerRadius' | 'stemWidth' | 'markerHaloWidth'>> & {
     /** Line thickness. Accepts a length: `2`, `'0.5mm'`, or `{ value, unit }`. */
     lineWidth?: LengthInput;
     /** Marker radius. Accepts a length: `5`, `'2mm'`, or `{ value, unit }`. */
     markerRadius?: LengthInput;
     /** Stem thickness. Accepts a length: `2`, `'0.5mm'`, or `{ value, unit }`. */
     stemWidth?: LengthInput;
+    /** Halo thickness behind markers. */
+    markerHaloWidth?: LengthInput;
 }
 ```
 
 ## Properties
 
+- [`curve`](#curve): Optional curve interpolation override for this series (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
+- [`dashPattern`](#dashpattern): Optional alternating dash and gap lengths in points for line strokes.
 - [`fillOpacity`](#fillopacity): Fill opacity for Area charts (0.0 to 1.0, default: 0.3f).
 - [`lineWidth`](#linewidth): Line thickness.
+- [`markerFill`](#markerfill): Optional marker fill style override (`solid`, `hollow`).
+- [`markerHaloWidth`](#markerhalowidth): Halo thickness behind markers.
 - [`markerRadius`](#markerradius): Marker radius.
-- [`showMarkers`](#showmarkers): Whether to show circular markers at data points in Line charts (default: true).
+- [`markerShape`](#markershape): Optional marker shape override (`circle`, `square`, `diamond`, `triangle`).
+- [`pattern`](#pattern): Optional vector hatch/dot pattern fill for monochrome print accessibility.
+- [`showMarkers`](#showmarkers): Whether to show markers at data points in Line charts (default: true).
 - [`stemWidth`](#stemwidth): Stem thickness.
+
+### `curve`
+
+```typescript
+curve?: ChartCurveMode | undefined
+```
+
+*optional*
+
+Optional curve interpolation override for this series (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
+
+### `dashPattern`
+
+```typescript
+dashPattern?: readonly number[] | undefined
+```
+
+*optional*
+
+Optional alternating dash and gap lengths in points for line strokes.
 
 ### `fillOpacity`
 
@@ -45,6 +73,26 @@ lineWidth?: LengthInput | undefined
 
 Line thickness. Accepts a length: `2`, `'0.5mm'`, or `{ value, unit }`.
 
+### `markerFill`
+
+```typescript
+markerFill?: ChartMarkerFill | undefined
+```
+
+*optional*
+
+Optional marker fill style override (`solid`, `hollow`).
+
+### `markerHaloWidth`
+
+```typescript
+markerHaloWidth?: LengthInput | undefined
+```
+
+*optional*
+
+Halo thickness behind markers.
+
 ### `markerRadius`
 
 ```typescript
@@ -55,6 +103,26 @@ markerRadius?: LengthInput | undefined
 
 Marker radius. Accepts a length: `5`, `'2mm'`, or `{ value, unit }`.
 
+### `markerShape`
+
+```typescript
+markerShape?: ChartMarkerShape | undefined
+```
+
+*optional*
+
+Optional marker shape override (`circle`, `square`, `diamond`, `triangle`).
+
+### `pattern`
+
+```typescript
+pattern?: ChartPatternKind | undefined
+```
+
+*optional*
+
+Optional vector hatch/dot pattern fill for monochrome print accessibility.
+
 ### `showMarkers`
 
 ```typescript
@@ -63,7 +131,7 @@ showMarkers?: boolean | undefined
 
 *optional*
 
-Whether to show circular markers at data points in Line charts (default: true).
+Whether to show markers at data points in Line charts (default: true).
 
 ### `stemWidth`
 

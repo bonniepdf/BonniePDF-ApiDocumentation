@@ -12,9 +12,22 @@ type ChartDataPointOptions = Partial<Pick<ChartDataPoint, (typeof CHART_DATA_POI
 
 ## Properties
 
+- [`kind`](#kind): Point role for WaterfallChart: `delta` (default), `total`, or `subtotal`.
 - [`label`](#label): Category label for the point, shown on the axis or in the legend.
-- [`labelFormat`](#labelformat): Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`.
-- [`value`](#value): Numeric value of the point.
+- [`labelFormat`](#labelformat): Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`.
+- [`size`](#size): Positive bubble size magnitude for ScatterChart; ignored by other charts.
+- [`value`](#value): Numeric value of the point (optional for WaterfallChart `total`/`subtotal` points).
+- [`x`](#x): Continuous X coordinate for ScatterChart; ignored by categorical charts.
+
+### `kind`
+
+```typescript
+kind?: ChartDataPointKind | undefined
+```
+
+*optional*
+
+Point role for WaterfallChart: `delta` (default), `total`, or `subtotal`.
 
 ### `label`
 
@@ -34,7 +47,17 @@ labelFormat?: string | undefined
 
 *optional*
 
-Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
+Number format for `formattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
+
+### `size`
+
+```typescript
+size?: number | undefined
+```
+
+*optional*
+
+Positive bubble size magnitude for ScatterChart; ignored by other charts.
 
 ### `value`
 
@@ -44,4 +67,14 @@ value?: number | undefined
 
 *optional*
 
-Numeric value of the point.
+Numeric value of the point (optional for WaterfallChart `total`/`subtotal` points).
+
+### `x`
+
+```typescript
+x?: number | undefined
+```
+
+*optional*
+
+Continuous X coordinate for ScatterChart; ignored by categorical charts.

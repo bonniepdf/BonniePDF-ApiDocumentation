@@ -7,7 +7,7 @@ Options for [`ChartData`](chart-data.md).
 Import from `@bonniepdf/core`.
 
 ```typescript
-type ChartDataOptions = Partial<Pick<ChartData, 'title'>> & {
+type ChartDataOptions = Partial<Pick<ChartData, 'title' | 'subtitle'>> & {
     /** Series; each may be an instance or an options literal. */
     series?: (ChartSeries | ChartSeriesOptions)[];
     /** Value axis; an instance or an options literal. */
@@ -20,6 +20,7 @@ type ChartDataOptions = Partial<Pick<ChartData, 'title'>> & {
 ## Properties
 
 - [`series`](#series): Series; each may be an instance or an options literal.
+- [`subtitle`](#subtitle): Optional subtitle displayed beneath the chart title
 - [`title`](#title): Chart title displayed at the top
 - [`xAxis`](#xaxis): Category axis; an instance or an options literal.
 - [`yAxis`](#yaxis): Value axis; an instance or an options literal.
@@ -34,6 +35,16 @@ series?: (ChartSeries | ChartSeriesOptions)[] | undefined
 
 Series; each may be an instance or an options literal.
 
+### `subtitle`
+
+```typescript
+subtitle?: string | undefined
+```
+
+*optional*
+
+Optional subtitle displayed beneath the chart title
+
 ### `title`
 
 ```typescript
@@ -47,7 +58,7 @@ Chart title displayed at the top
 ### `xAxis`
 
 ```typescript
-xAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend">> | undefined
+xAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend" | "autoScale" | "includeZero" | "headroom" | "valueFormat" | "labelOverflow">> | undefined
 ```
 
 *optional*
@@ -57,7 +68,7 @@ Category axis; an instance or an options literal.
 ### `yAxis`
 
 ```typescript
-yAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend">> | undefined
+yAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend" | "autoScale" | "includeZero" | "headroom" | "valueFormat" | "labelOverflow">> | undefined
 ```
 
 *optional*

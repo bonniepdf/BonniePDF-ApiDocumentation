@@ -14,10 +14,10 @@ new BarChart(options?: BarChartOptions)
 
 ## Properties
 
-- [`barColor`](#barcolor): Bar colour.
-- [`barStyle`](#barstyle): Value-end rounding and optional opaque linear gradient.
-- [`barWidthRatio`](#barwidthratio): Width of bars as percentage of available space (0.0 to 1.0, default: 0.6).
-- [`svgShapeRendering`](#svgshaperendering): Bars and gridlines are axis-aligned, so crisp edges render sharper than antialiased.
+- [`barColor`](#barcolor): Default bar colour for series without an explicit colour.
+- [`barStyle`](#barstyle): Corner rounding and gradient style applied to bars.
+- [`barWidthRatio`](#barwidthratio): Fraction of each category slot occupied by the bar (`0..1`).
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `barColor`
 
@@ -25,7 +25,7 @@ new BarChart(options?: BarChartOptions)
 barColor: Color
 ```
 
-Bar colour. Accepts a palette token or hex.
+Default bar colour for series without an explicit colour.
 
 Example, from `industry-templates/billing-payments/utility-bill`:
 
@@ -45,7 +45,7 @@ chart.barColor = PRIMARY;
 barStyle: ChartBarStyle
 ```
 
-Value-end rounding and optional opaque linear gradient.
+Corner rounding and gradient style applied to bars.
 
 Example, from `industry-templates/finance-reporting/financial-dashboard`:
 
@@ -65,7 +65,7 @@ barChart3.barStyle = { cornerRadius: 6, gradient: { startColor: '#60a5fa', endCo
 barWidthRatio: number
 ```
 
-Width of bars as percentage of available space (0.0 to 1.0, default: 0.6).
+Fraction of each category slot occupied by the bar (`0..1`).
 
 Example, from `code-recipes/comparison-charts/horizontal-bar-chart`:
 
@@ -79,4 +79,4 @@ chart.barWidthRatio = 0.55;
 svgShapeRendering: "crispEdges" | "auto" | undefined
 ```
 
-Bars and gridlines are axis-aligned, so crisp edges render sharper than antialiased.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).

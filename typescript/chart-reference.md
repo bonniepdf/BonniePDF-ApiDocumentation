@@ -11,6 +11,11 @@ Import from `@bonniepdf/core`.
 - [`color`](#color): Fill or stroke colour.
 - [`dashPattern`](#dashpattern): Optional alternating dash and gap lengths in points.
 - [`endValue`](#endvalue): The second band endpoint.
+- [`label`](#label): Optional annotation label text.
+- [`labelBackgroundColor`](#labelbackgroundcolor): Optional rounded pill background behind the label.
+- [`labelColor`](#labelcolor): Optional label colour override.
+- [`labelPlacement`](#labelplacement): Placement relative to the line or band: `above`, `below`, or `inside`.
+- [`labelPosition`](#labelposition): Position along the line or band: `start`, `center`, or `end` (default).
 - [`thickness`](#thickness): The line thickness in points.
 - [`value`](#value): The line value or the first band endpoint.
 
@@ -41,6 +46,56 @@ endValue?: number | undefined
 *optional*
 
 The second band endpoint. Omit it for a line.
+
+### `label`
+
+```typescript
+label?: string | undefined
+```
+
+*optional*
+
+Optional annotation label text.
+
+### `labelBackgroundColor`
+
+```typescript
+labelBackgroundColor?: ColorInput | undefined
+```
+
+*optional*
+
+Optional rounded pill background behind the label.
+
+### `labelColor`
+
+```typescript
+labelColor?: ColorInput | undefined
+```
+
+*optional*
+
+Optional label colour override.
+
+### `labelPlacement`
+
+```typescript
+labelPlacement?: ChartReferenceLabelPlacement | undefined
+```
+
+*optional*
+
+Placement relative to the line or band: `above`, `below`, or `inside`.
+
+### `labelPosition`
+
+```typescript
+labelPosition?: ChartReferenceLabelPosition | undefined
+```
+
+*optional*
+
+Position along the line or band: `start`, `center`, or `end` (default).
 
 ### `thickness`
 

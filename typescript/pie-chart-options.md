@@ -13,27 +13,40 @@ type PieChartOptions = ChartBaseOptions & Partial<Pick<PieChart, (typeof PIE_CHA
 ## Properties
 
 - [`altText`](#alttext): Alternate text used when the document is generated as PDF/UA-1.
+- [`autoLayout`](#autolayout): Enable content-aware dynamic margins based on measured text bounds.
 - [`backgroundColor`](#backgroundcolor): Background fill.
+- [`borderColor`](#bordercolor): Optional card border colour.
+- [`borderRadius`](#borderradius): Optional card border corner radius.
+- [`borderWidth`](#borderwidth): Optional card border stroke width.
 - [`breakAllowed`](#breakallowed): Whether this element can be split across page boundaries.
+- [`caption`](#caption): Optional source or footnote line drawn at the bottom-left of the chart.
 - [`captureName`](#capturename): Optional author-supplied name/key surfaced in the layout snapshot.
-- [`colors`](#colors): Custom colors to use for the pie slices.
+- [`colors`](#colors): Optional custom hex colour palette cycled across slices.
 - [`contentDirection`](#contentdirection): Inline progression and paragraph base direction; omitted inherits.
 - [`data`](#data): Chart content; accepts a ChartData instance or a nested options literal.
+- [`donutHoleRatio`](#donutholeratio): Optional explicit inner/outer radius ratio (`0..0.85`) when `isDonut` is true.
 - [`height`](#height): Chart height.
+- [`inheritDocumentFont`](#inheritdocumentfont): When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 - [`isDecorative`](#isdecorative): Marks the chart as decorative even when altText is set.
-- [`isDonut`](#isdonut): Whether to render as a donut chart with a transparent center hole.
+- [`isDonut`](#isdonut): Whether to draw a donut ring with a hollow centre instead of a filled pie.
 - [`keepWithNext`](#keepwithnext): Keeps this element with the start of its next sibling in vertical flow.
+- [`legendFormat`](#legendformat): Format of legend rows (`labelValue`, `labelPercent`, `labelValuePercent`, `labelOnly`).
 - [`margin`](#margin): Margin around this element.
-- [`showLegend`](#showlegend): Whether to show the legend.
-- [`showTotal`](#showtotal): Whether to show the total value as a summary row below the legend items.
-- [`sliceGradient`](#slicegradient): Fill each slice with a gradient from a lighter tint of its colour at the centre side to its own colour at the rim.
+- [`percentFormat`](#percentformat): Percentage format when `legendFormat` or `sliceLabelMode` displays percentages (default `F0`).
+- [`showLegend`](#showlegend): Whether to display the legend beside the chart.
+- [`showTotal`](#showtotal): Whether to display the sum of all slice values.
+- [`sliceBorderWidth`](#sliceborderwidth): Optional background-coloured separator stroke width between slices in points.
+- [`sliceGradient`](#slicegradient): Whether to shade each slice with a subtle tonal gradient.
+- [`sliceLabelMode`](#slicelabelmode): Direct slice label placement (`none`, `inside`, or `callout`).
 - [`stretchToFit`](#stretchtofit): When true, the chart will stretch to fill the container width.
-- [`svgShapeRendering`](#svgshaperendering): Preferred root `shape-rendering` for standalone SVG export (`*`).
-- [`theme`](#theme): Appearance preset.
+- [`subtitle`](#subtitle): Optional subtitle drawn beneath the title.
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
+- [`theme`](#theme): Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 - [`title`](#title): Visible title drawn inside the chart.
-- [`totalLabel`](#totallabel): Label prefix for the total row in the legend (e.g. "Total").
-- [`totalPosition`](#totalposition): Where the total is shown: `'legend'` (default), as a row below the legend items, or `'center'`, as a large figure with `totalLabel` beneath it in the donut hole, which then widens to fit.
-- [`totalValueFormat`](#totalvalueformat): Number format for the total: `G` (default), `F<n>`, `N<n>` or `P<n>`.
+- [`totalLabel`](#totallabel): Label displayed beside or above the total value.
+- [`totalPosition`](#totalposition): Where to render the total (`legend` or donut `center`).
+- [`totalValueFormat`](#totalvalueformat): Optional number format for the total value.
+- [`valueFormat`](#valueformat): Optional number format for legend and callout slice values.
 - [`width`](#width): Chart width.
 
 ### `altText`
@@ -46,6 +59,16 @@ altText?: string | undefined
 
 Alternate text used when the document is generated as PDF/UA-1.
 
+### `autoLayout`
+
+```typescript
+autoLayout?: boolean | undefined
+```
+
+*optional*
+
+Enable content-aware dynamic margins based on measured text bounds.
+
 ### `backgroundColor`
 
 ```typescript
@@ -56,6 +79,36 @@ backgroundColor?: ColorInput | undefined
 
 Background fill. Accepts a palette token or hex.
 
+### `borderColor`
+
+```typescript
+borderColor?: ColorInput | undefined
+```
+
+*optional*
+
+Optional card border colour.
+
+### `borderRadius`
+
+```typescript
+borderRadius?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border corner radius.
+
+### `borderWidth`
+
+```typescript
+borderWidth?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border stroke width.
+
 ### `breakAllowed`
 
 ```typescript
@@ -65,6 +118,16 @@ breakAllowed?: boolean | undefined
 *optional*
 
 Whether this element can be split across page boundaries. When false, the element is treated as atomic and will be moved to a new page rather than split. If it doesn't fit on a fresh page either, it renders anyway. Default is true.
+
+### `caption`
+
+```typescript
+caption?: string | undefined
+```
+
+*optional*
+
+Optional source or footnote line drawn at the bottom-left of the chart.
 
 ### `captureName`
 
@@ -84,7 +147,7 @@ colors?: string[] | undefined
 
 *optional*
 
-Custom colors to use for the pie slices. If null, uses the default color palette.
+Optional custom hex colour palette cycled across slices.
 
 ### `contentDirection`
 
@@ -106,6 +169,16 @@ data?: ChartData | ChartDataOptions | undefined
 
 Chart content; accepts a ChartData instance or a nested options literal.
 
+### `donutHoleRatio`
+
+```typescript
+donutHoleRatio?: number | undefined
+```
+
+*optional*
+
+Optional explicit inner/outer radius ratio (`0..0.85`) when `isDonut` is true.
+
 ### `height`
 
 ```typescript
@@ -115,6 +188,16 @@ height?: LengthInput | undefined
 *optional*
 
 Chart height. Accepts a length: `450`, `'12cm'`, or `{ value, unit }`.
+
+### `inheritDocumentFont`
+
+```typescript
+inheritDocumentFont?: boolean | undefined
+```
+
+*optional*
+
+When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 
 ### `isDecorative`
 
@@ -134,7 +217,7 @@ isDonut?: boolean | undefined
 
 *optional*
 
-Whether to render as a donut chart with a transparent center hole. Default is true.
+Whether to draw a donut ring with a hollow centre instead of a filled pie.
 
 ### `keepWithNext`
 
@@ -146,6 +229,16 @@ keepWithNext?: boolean | undefined
 
 Keeps this element with the start of its next sibling in vertical flow.
 
+### `legendFormat`
+
+```typescript
+legendFormat?: PieLegendFormat | undefined
+```
+
+*optional*
+
+Format of legend rows (`labelValue`, `labelPercent`, `labelValuePercent`, `labelOnly`).
+
 ### `margin`
 
 ```typescript
@@ -156,6 +249,16 @@ margin?: ThicknessInput | undefined
 
 Margin around this element. Accepts `12`, `[h, v]`, `[l, t, r, b]` or `{ bottom: 12 }`; omitted sides are zero.
 
+### `percentFormat`
+
+```typescript
+percentFormat?: string | undefined
+```
+
+*optional*
+
+Percentage format when `legendFormat` or `sliceLabelMode` displays percentages (default `F0`).
+
 ### `showLegend`
 
 ```typescript
@@ -164,7 +267,7 @@ showLegend?: boolean | undefined
 
 *optional*
 
-Whether to show the legend. Default is true.
+Whether to display the legend beside the chart.
 
 ### `showTotal`
 
@@ -174,7 +277,17 @@ showTotal?: boolean | undefined
 
 *optional*
 
-Whether to show the total value as a summary row below the legend items. Default is true.
+Whether to display the sum of all slice values.
+
+### `sliceBorderWidth`
+
+```typescript
+sliceBorderWidth?: number | undefined
+```
+
+*optional*
+
+Optional background-coloured separator stroke width between slices in points.
 
 ### `sliceGradient`
 
@@ -184,7 +297,17 @@ sliceGradient?: boolean | undefined
 
 *optional*
 
-Fill each slice with a gradient from a lighter tint of its colour at the centre side to its own colour at the rim. Slice colours must be opaque. Default is false.
+Whether to shade each slice with a subtle tonal gradient.
+
+### `sliceLabelMode`
+
+```typescript
+sliceLabelMode?: PieSliceLabelMode | undefined
+```
+
+*optional*
+
+Direct slice label placement (`none`, `inside`, or `callout`).
 
 ### `stretchToFit`
 
@@ -196,6 +319,16 @@ stretchToFit?: boolean | undefined
 
 When true, the chart will stretch to fill the container width. The width will be set automatically by the document layout engine.
 
+### `subtitle`
+
+```typescript
+subtitle?: string | undefined
+```
+
+*optional*
+
+Optional subtitle drawn beneath the title.
+
 ### `svgShapeRendering`
 
 ```typescript
@@ -204,17 +337,17 @@ svgShapeRendering?: "crispEdges" | "auto" | undefined
 
 *optional*
 
-Preferred root `shape-rendering` for standalone SVG export (`*`). `undefined` (the default) keeps the SVG default antialiasing, which is required for charts with diagonal lines, arcs, or circles. Axis-aligned charts (bar, grouped bar) override this to `'crispEdges'` so their bars and gridlines snap to the pixel grid instead of softening into blurred edges. Text is governed by `text-rendering`, so it is unaffected either way.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `theme`
 
 ```typescript
-theme?: "legacy" | "modern" | undefined
+theme?: ChartThemeInput | undefined
 ```
 
 *optional*
 
-Appearance preset. Legacy preserves existing output; modern is opt-in.
+Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 
 ### `title`
 
@@ -234,7 +367,7 @@ totalLabel?: string | undefined
 
 *optional*
 
-Label prefix for the total row in the legend (e.g. "Total"). Default is "Total".
+Label displayed beside or above the total value.
 
 ### `totalPosition`
 
@@ -244,7 +377,7 @@ totalPosition?: "center" | "legend" | undefined
 
 *optional*
 
-Where the total is shown: `'legend'` (default), as a row below the legend items, or `'center'`, as a large figure with `totalLabel` beneath it in the donut hole, which then widens to fit. A full pie has no hole, so it keeps the total in the legend.
+Where to render the total (`legend` or donut `center`).
 
 ### `totalValueFormat`
 
@@ -254,7 +387,17 @@ totalValueFormat?: string | undefined
 
 *optional*
 
-Number format for the total: `G` (default), `F<n>`, `N<n>` or `P<n>`. Culture-invariant; see [`formatChartNumber`](format-chart-number.md). Anything else throws when the chart is drawn.
+Optional number format for the total value.
+
+### `valueFormat`
+
+```typescript
+valueFormat?: string | undefined
+```
+
+*optional*
+
+Optional number format for legend and callout slice values.
 
 ### `width`
 

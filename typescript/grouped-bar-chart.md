@@ -14,10 +14,10 @@ new GroupedBarChart(options?: GroupedBarChartOptions)
 
 ## Properties
 
-- [`barStyle`](#barstyle): Value-end rounding and optional opaque linear gradient.
-- [`barWidthRatio`](#barwidthratio): Width of bars as percentage of available space (0.0 to 1.0, default: 0.6).
-- [`groupGapRatio`](#groupgapratio): Gap between groups as percentage of available space (0.0 to 1.0, default: 0.2).
-- [`svgShapeRendering`](#svgshaperendering): Bars and gridlines are axis-aligned, so crisp edges render sharper than antialiased.
+- [`barStyle`](#barstyle): Corner rounding and gradient style applied to grouped bars.
+- [`barWidthRatio`](#barwidthratio): Fraction of each category slot occupied by the bar group (`0..1`).
+- [`groupGapRatio`](#groupgapratio): Relative gap between bars inside a group (`0..1`).
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `barStyle`
 
@@ -25,7 +25,7 @@ new GroupedBarChart(options?: GroupedBarChartOptions)
 barStyle: ChartBarStyle
 ```
 
-Value-end rounding and optional opaque linear gradient.
+Corner rounding and gradient style applied to grouped bars.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
@@ -39,7 +39,7 @@ groupedBarChart4.barStyle = { cornerRadius: 3 };
 barWidthRatio: number
 ```
 
-Width of bars as percentage of available space (0.0 to 1.0, default: 0.6).
+Fraction of each category slot occupied by the bar group (`0..1`).
 
 Example, from `code-recipes/comparison-charts/horizontal-grouped-bar-chart`:
 
@@ -53,7 +53,7 @@ chart.barWidthRatio = 0.7;
 groupGapRatio: number
 ```
 
-Gap between groups as percentage of available space (0.0 to 1.0, default: 0.2).
+Relative gap between bars inside a group (`0..1`).
 
 Example, from `code-recipes/comparison-charts/horizontal-grouped-bar-chart`:
 
@@ -67,4 +67,4 @@ chart.groupGapRatio = 0.25;
 svgShapeRendering: "crispEdges" | "auto" | undefined
 ```
 
-Bars and gridlines are axis-aligned, so crisp edges render sharper than antialiased.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).

@@ -16,8 +16,10 @@ new ChartSeries(options?: ChartSeriesOptions)
 
 - [`color`](#color): Series colour.
 - [`dataPoints`](#datapoints): Data points for this series.
-- [`name`](#name): Series name/label (e.g., "Year Sales", "Product A", "Q1 Revenue") Used in legends and tooltips.
+- [`name`](#name): Series name/label used in legends.
+- [`seriesType`](#seriestype): Renderer role when used in ComboChart: `bar` (default), `line`, or `area`.
 - [`style`](#style): Series-specific styling options.
+- [`valueAxis`](#valueaxis): Value axis binding when used in ComboChart: `primary` (default) or `secondary`.
 
 ### `color`
 
@@ -25,7 +27,7 @@ new ChartSeries(options?: ChartSeriesOptions)
 color: Color
 ```
 
-Series colour. Accepts a palette token or hex. A series the author gave no colour reads as `#4f46e5` and is drawn in its chart's own colour (`barColor`, `lineColor`, `areaColor`, `dotColor`, `lollipopColor`).
+Series colour. Accepts a palette token or hex.
 
 Example, from `industry-templates/healthcare/lab-report`:
 
@@ -45,7 +47,7 @@ series.color = ACCENT;
 dataPoints: ChartDataPoint[]
 ```
 
-Data points for this series. Each data point contains a label, value, and optional format string.
+Data points for this series.
 
 > A list you can change.
 
@@ -72,7 +74,7 @@ series.dataPoints = order.map((label, i) => {
 name: string
 ```
 
-Series name/label (e.g., "Year Sales", "Product A", "Q1 Revenue") Used in legends and tooltips.
+Series name/label used in legends.
 
 Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
@@ -86,10 +88,26 @@ Example, from `code-recipes/comparison-charts/grouped-bar-chart`:
 clothing.name = 'Clothing';
 ```
 
+### `seriesType`
+
+```typescript
+seriesType: ChartSeriesType
+```
+
+Renderer role when used in ComboChart: `bar` (default), `line`, or `area`.
+
 ### `style`
 
 ```typescript
 style: ChartSeriesStyle
 ```
 
-Series-specific styling options. Allows customization of line width, opacity, marker size, etc.
+Series-specific styling options.
+
+### `valueAxis`
+
+```typescript
+valueAxis: ChartAxisTarget
+```
+
+Value axis binding when used in ComboChart: `primary` (default) or `secondary`.

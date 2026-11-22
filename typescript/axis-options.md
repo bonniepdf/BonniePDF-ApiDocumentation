@@ -14,6 +14,10 @@ new AxisOptions(options?: AxisOptionsOptions)
 
 ## Properties
 
+- [`autoScale`](#autoscale): Compute nice axis bounds and tick spacing from plotted data using Heckbert scaling.
+- [`headroom`](#headroom): Fractional headroom (0..0.5) beyond extreme values before rounding; undefined defers to chart default.
+- [`includeZero`](#includezero): Include zero in the auto-scaled range; undefined defers to the chart family's default.
+- [`labelOverflow`](#labeloverflow): Category-axis label overflow strategy: `omit` (default), `rotate`, `wrap`, or `auto`.
 - [`legend`](#legend): Legend/title for this axis (e.g., "Sales (£)", "Month")
 - [`maxValue`](#maxvalue): Highest value on the value axis.
 - [`minValue`](#minvalue): Lowest value on the value axis (default: 0).
@@ -21,7 +25,40 @@ new AxisOptions(options?: AxisOptionsOptions)
 - [`showGridLines`](#showgridlines): Whether to show grid lines for this axis
 - [`stepCount`](#stepcount): Number of grid lines/steps on the axis
 - [`suffix`](#suffix): Suffix for value labels (e.g., "%", "k")
+- [`valueFormat`](#valueformat): Number format string (`G`, `F<n>`, `N<n>`, `P<n>`, `C<n>`) for axis tick labels.
 - [`verticalLegend`](#verticallegend): Whether to render the legend vertically (rotated 90 degrees) instead of horizontally.
+
+### `autoScale`
+
+```typescript
+autoScale: boolean
+```
+
+Compute nice axis bounds and tick spacing from plotted data using Heckbert scaling.
+
+### `headroom`
+
+```typescript
+headroom: number | undefined
+```
+
+Fractional headroom (0..0.5) beyond extreme values before rounding; undefined defers to chart default.
+
+### `includeZero`
+
+```typescript
+includeZero: boolean | undefined
+```
+
+Include zero in the auto-scaled range; undefined defers to the chart family's default.
+
+### `labelOverflow`
+
+```typescript
+labelOverflow: AxisLabelOverflow
+```
+
+Category-axis label overflow strategy: `omit` (default), `rotate`, `wrap`, or `auto`.
 
 ### `legend`
 
@@ -45,7 +82,7 @@ Highest value on the value axis. Must be greater than `minValue` when a chart wi
 minValue: number
 ```
 
-Lowest value on the value axis (default: 0). Values are placed linearly between this and `maxValue`, and bars, areas and stems start at zero limited to that range.
+Lowest value on the value axis (default: 0).
 
 ### `prefix`
 
@@ -79,10 +116,18 @@ suffix: string
 
 Suffix for value labels (e.g., "%", "k")
 
+### `valueFormat`
+
+```typescript
+valueFormat: string | undefined
+```
+
+Number format string (`G`, `F<n>`, `N<n>`, `P<n>`, `C<n>`) for axis tick labels.
+
 ### `verticalLegend`
 
 ```typescript
 verticalLegend: boolean
 ```
 
-Whether to render the legend vertically (rotated 90 degrees) instead of horizontally. This is particularly useful for Y-axis labels where vertical orientation saves horizontal space.
+Whether to render the legend vertically (rotated 90 degrees) instead of horizontally.

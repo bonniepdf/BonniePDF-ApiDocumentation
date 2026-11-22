@@ -14,14 +14,28 @@ new CartesianChartBase()
 
 ## Properties
 
+- [`clipToPlotArea`](#cliptoplotarea): Optional clip of plotted series geometry to the plot area; undefined defers to chart family default.
 - [`fontFamily`](#fontfamily): Font family for labels
-- [`labelFontSize`](#labelfontsize): Font size for value labels above data points Accepts a length: a number of points, `'9pt'`, or `{ value, unit }`.
+- [`labelFontSize`](#labelfontsize): Font size for value labels above data points
+- [`legendPosition`](#legendposition): Where to draw the legend: `bottom` (default), `top`, `right`, `inline`, or `none`.
 - [`orientation`](#orientation): Controls whether the chart renders with vertical or horizontal orientation.
 - [`references`](#references): Reference lines and bands on the value axis.
 - [`showLegend`](#showlegend): Whether to show a legend for multiple series (default: true).
 - [`showValueLabels`](#showvaluelabels): Whether to show value labels above each data point
+- [`valueLabelFormat`](#valuelabelformat): Chart-level number format for value labels when a point did not set its own labelFormat.
+- [`valueLabelPosition`](#valuelabelposition): Value label placement on bar charts: `outside` (default), `inside`, or `auto`.
+- [`valueLabelPrefix`](#valuelabelprefix): Optional prefix prepended to value labels.
+- [`valueLabelSuffix`](#valuelabelsuffix): Optional suffix appended to value labels.
 - [`xAxis`](#xaxis): Category-axis presentation owned by this chart.
 - [`yAxis`](#yaxis): Value-axis presentation owned by this chart.
+
+### `clipToPlotArea`
+
+```typescript
+clipToPlotArea: boolean | undefined
+```
+
+Optional clip of plotted series geometry to the plot area; undefined defers to chart family default.
 
 ### `fontFamily`
 
@@ -39,7 +53,13 @@ labelFontSize: number
 
 Font size for value labels above data points
 
-Accepts a length: a number of points, `'9pt'`, or `{ value, unit }`.
+### `legendPosition`
+
+```typescript
+legendPosition: ChartLegendPosition
+```
+
+Where to draw the legend: `bottom` (default), `top`, `right`, `inline`, or `none`.
 
 ### `orientation`
 
@@ -47,7 +67,7 @@ Accepts a length: a number of points, `'9pt'`, or `{ value, unit }`.
 orientation: ChartOrientation
 ```
 
-Controls whether the chart renders with vertical or horizontal orientation. In horizontal mode, categories run along the Y-axis (left) and values along the X-axis (bottom). Setting this on any chart type enables horizontal rendering without needing a separate class.
+Controls whether the chart renders with vertical or horizontal orientation.
 
 ### `references`
 
@@ -74,6 +94,38 @@ showValueLabels: boolean
 ```
 
 Whether to show value labels above each data point
+
+### `valueLabelFormat`
+
+```typescript
+valueLabelFormat: string | undefined
+```
+
+Chart-level number format for value labels when a point did not set its own labelFormat.
+
+### `valueLabelPosition`
+
+```typescript
+valueLabelPosition: ChartValueLabelPosition
+```
+
+Value label placement on bar charts: `outside` (default), `inside`, or `auto`.
+
+### `valueLabelPrefix`
+
+```typescript
+valueLabelPrefix: string
+```
+
+Optional prefix prepended to value labels.
+
+### `valueLabelSuffix`
+
+```typescript
+valueLabelSuffix: string
+```
+
+Optional suffix appended to value labels.
 
 ### `xAxis`
 

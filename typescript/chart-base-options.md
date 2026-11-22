@@ -7,7 +7,9 @@ Options common to every chart.
 Import from `@bonniepdf/core`.
 
 ```typescript
-type ChartBaseOptions = ElementOptions & Partial<Omit<Pick<ChartBase, Exclude<(typeof CHART_BASE_OPTION_KEYS)[number], (typeof ELEMENT_OPTION_KEYS)[number]>>, 'backgroundColor' | 'data' | 'width' | 'height'>> & {
+type ChartBaseOptions = ElementOptions & Partial<Omit<Pick<ChartBase, Exclude<(typeof CHART_BASE_OPTION_KEYS)[number], (typeof ELEMENT_OPTION_KEYS)[number]>>, 'backgroundColor' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'data' | 'width' | 'height' | 'theme'>> & {
+    /** Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition. */
+    theme?: ChartThemeInput;
     /** Chart width. Accepts a length: `800`, `'20cm'`, or `{ value, unit }`. */
     width?: LengthInput;
     /** Chart height. Accepts a length: `450`, `'12cm'`, or `{ value, unit }`. */
@@ -16,24 +18,37 @@ type ChartBaseOptions = ElementOptions & Partial<Omit<Pick<ChartBase, Exclude<(t
     data?: ChartData | ChartDataOptions;
     /** Background fill. Accepts a palette token or hex. */
     backgroundColor?: Color | ColorInput;
+    /** Optional card border corner radius. */
+    borderRadius?: LengthInput;
+    /** Optional card border colour. */
+    borderColor?: Color | ColorInput;
+    /** Optional card border stroke width. */
+    borderWidth?: LengthInput;
 }
 ```
 
 ## Properties
 
 - [`altText`](#alttext): Alternate text used when the document is generated as PDF/UA-1.
+- [`autoLayout`](#autolayout): Enable content-aware dynamic margins based on measured text bounds.
 - [`backgroundColor`](#backgroundcolor): Background fill.
+- [`borderColor`](#bordercolor): Optional card border colour.
+- [`borderRadius`](#borderradius): Optional card border corner radius.
+- [`borderWidth`](#borderwidth): Optional card border stroke width.
 - [`breakAllowed`](#breakallowed): Whether this element can be split across page boundaries.
+- [`caption`](#caption): Optional source or footnote line drawn at the bottom-left of the chart.
 - [`captureName`](#capturename): Optional author-supplied name/key surfaced in the layout snapshot.
 - [`contentDirection`](#contentdirection): Inline progression and paragraph base direction; omitted inherits.
 - [`data`](#data): Chart content; accepts a ChartData instance or a nested options literal.
 - [`height`](#height): Chart height.
+- [`inheritDocumentFont`](#inheritdocumentfont): When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 - [`isDecorative`](#isdecorative): Marks the chart as decorative even when altText is set.
 - [`keepWithNext`](#keepwithnext): Keeps this element with the start of its next sibling in vertical flow.
 - [`margin`](#margin): Margin around this element.
 - [`stretchToFit`](#stretchtofit): When true, the chart will stretch to fill the container width.
-- [`svgShapeRendering`](#svgshaperendering): Preferred root `shape-rendering` for standalone SVG export (`*`).
-- [`theme`](#theme): Appearance preset.
+- [`subtitle`](#subtitle): Optional subtitle drawn beneath the title.
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
+- [`theme`](#theme): Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 - [`title`](#title): Visible title drawn inside the chart.
 - [`width`](#width): Chart width.
 
@@ -47,6 +62,16 @@ altText?: string | undefined
 
 Alternate text used when the document is generated as PDF/UA-1.
 
+### `autoLayout`
+
+```typescript
+autoLayout?: boolean | undefined
+```
+
+*optional*
+
+Enable content-aware dynamic margins based on measured text bounds.
+
 ### `backgroundColor`
 
 ```typescript
@@ -57,6 +82,36 @@ backgroundColor?: ColorInput | undefined
 
 Background fill. Accepts a palette token or hex.
 
+### `borderColor`
+
+```typescript
+borderColor?: ColorInput | undefined
+```
+
+*optional*
+
+Optional card border colour.
+
+### `borderRadius`
+
+```typescript
+borderRadius?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border corner radius.
+
+### `borderWidth`
+
+```typescript
+borderWidth?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border stroke width.
+
 ### `breakAllowed`
 
 ```typescript
@@ -66,6 +121,16 @@ breakAllowed?: boolean | undefined
 *optional*
 
 Whether this element can be split across page boundaries. When false, the element is treated as atomic and will be moved to a new page rather than split. If it doesn't fit on a fresh page either, it renders anyway. Default is true.
+
+### `caption`
+
+```typescript
+caption?: string | undefined
+```
+
+*optional*
+
+Optional source or footnote line drawn at the bottom-left of the chart.
 
 ### `captureName`
 
@@ -107,6 +172,16 @@ height?: LengthInput | undefined
 
 Chart height. Accepts a length: `450`, `'12cm'`, or `{ value, unit }`.
 
+### `inheritDocumentFont`
+
+```typescript
+inheritDocumentFont?: boolean | undefined
+```
+
+*optional*
+
+When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
+
 ### `isDecorative`
 
 ```typescript
@@ -147,6 +222,16 @@ stretchToFit?: boolean | undefined
 
 When true, the chart will stretch to fill the container width. The width will be set automatically by the document layout engine.
 
+### `subtitle`
+
+```typescript
+subtitle?: string | undefined
+```
+
+*optional*
+
+Optional subtitle drawn beneath the title.
+
 ### `svgShapeRendering`
 
 ```typescript
@@ -155,17 +240,17 @@ svgShapeRendering?: "crispEdges" | "auto" | undefined
 
 *optional*
 
-Preferred root `shape-rendering` for standalone SVG export (`*`). `undefined` (the default) keeps the SVG default antialiasing, which is required for charts with diagonal lines, arcs, or circles. Axis-aligned charts (bar, grouped bar) override this to `'crispEdges'` so their bars and gridlines snap to the pixel grid instead of softening into blurred edges. Text is governed by `text-rendering`, so it is unaffected either way.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `theme`
 
 ```typescript
-theme?: "legacy" | "modern" | undefined
+theme?: ChartThemeInput | undefined
 ```
 
 *optional*
 
-Appearance preset. Legacy preserves existing output; modern is opt-in.
+Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 
 ### `title`
 

@@ -21,8 +21,10 @@ type ChartSeriesOptions = Partial<Omit<Pick<ChartSeries, (typeof CHART_SERIES_OP
 
 - [`color`](#color): Series colour.
 - [`dataPoints`](#datapoints): Data points; each may be an instance or an options literal.
-- [`name`](#name): Series name/label (e.g., "Year Sales", "Product A", "Q1 Revenue") Used in legends and tooltips.
+- [`name`](#name): Series name/label used in legends.
+- [`seriesType`](#seriestype): Renderer role when used in ComboChart: `bar` (default), `line`, or `area`.
 - [`style`](#style): Series styling; an instance or an options literal.
+- [`valueAxis`](#valueaxis): Value axis binding when used in ComboChart: `primary` (default) or `secondary`.
 
 ### `color`
 
@@ -37,7 +39,7 @@ Series colour. Accepts a palette token or hex.
 ### `dataPoints`
 
 ```typescript
-dataPoints?: (ChartDataPoint | Partial<Pick<ChartDataPoint, "value" | "label" | "labelFormat">>)[] | undefined
+dataPoints?: (ChartDataPoint | Partial<Pick<ChartDataPoint, "size" | "value" | "label" | "labelFormat" | "x" | "kind">>)[] | undefined
 ```
 
 *optional*
@@ -52,7 +54,17 @@ name?: string | undefined
 
 *optional*
 
-Series name/label (e.g., "Year Sales", "Product A", "Q1 Revenue") Used in legends and tooltips.
+Series name/label used in legends.
+
+### `seriesType`
+
+```typescript
+seriesType?: ChartSeriesType | undefined
+```
+
+*optional*
+
+Renderer role when used in ComboChart: `bar` (default), `line`, or `area`.
 
 ### `style`
 
@@ -63,3 +75,13 @@ style?: ChartSeriesStyle | ChartSeriesStyleOptions | undefined
 *optional*
 
 Series styling; an instance or an options literal.
+
+### `valueAxis`
+
+```typescript
+valueAxis?: ChartAxisTarget | undefined
+```
+
+*optional*
+
+Value axis binding when used in ComboChart: `primary` (default) or `secondary`.

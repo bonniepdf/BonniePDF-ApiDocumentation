@@ -8,9 +8,9 @@ Import from `@bonniepdf/core`.
 
 ```typescript
 type AreaChartOptions = CartesianChartOptions & Partial<Omit<Pick<AreaChart, (typeof AREA_CHART_OWN_OPTION_KEYS)[number]>, 'areaColor' | 'lineWidth'>> & {
-    /** Line thickness. Accepts a length: `2`, `'0.5mm'`, or `{ value, unit }`. */
+    /** Stroke width of the upper area boundary line. */
     lineWidth?: LengthInput;
-    /** areaColor colour. Accepts a palette token or hex. */
+    /** Default colour for series without an explicit colour. */
     areaColor?: ColorInput;
 }
 ```
@@ -18,30 +18,45 @@ type AreaChartOptions = CartesianChartOptions & Partial<Omit<Pick<AreaChart, (ty
 ## Properties
 
 - [`altText`](#alttext): Alternate text used when the document is generated as PDF/UA-1.
-- [`areaColor`](#areacolor): areaColor colour.
+- [`areaColor`](#areacolor): Default colour for series without an explicit colour.
+- [`areaGradient`](#areagradient): Vertical (or horizontal) fade gradient from series colour to near-transparent at the baseline.
+- [`autoLayout`](#autolayout): Enable content-aware dynamic margins based on measured text bounds.
 - [`backgroundColor`](#backgroundcolor): Background fill.
+- [`borderColor`](#bordercolor): Optional card border colour.
+- [`borderRadius`](#borderradius): Optional card border corner radius.
+- [`borderWidth`](#borderwidth): Optional card border stroke width.
 - [`breakAllowed`](#breakallowed): Whether this element can be split across page boundaries.
+- [`caption`](#caption): Optional source or footnote line drawn at the bottom-left of the chart.
 - [`captureName`](#capturename): Optional author-supplied name/key surfaced in the layout snapshot.
+- [`clipToPlotArea`](#cliptoplotarea): Optional clip of plotted series geometry to the plot area; undefined defers to chart family default.
 - [`contentDirection`](#contentdirection): Inline progression and paragraph base direction; omitted inherits.
+- [`curve`](#curve): Curve interpolation mode: `linear` (default), `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`.
 - [`data`](#data): Chart content; accepts a ChartData instance or a nested options literal.
-- [`defaultFillOpacity`](#defaultfillopacity): Default fill opacity for all series (can be overridden per series via Style).
-- [`defaultLineWidth`](#defaultlinewidth): Default line width for all series (can be overridden per series via Style).
-- [`fillOpacity`](#fillopacity): Opacity for the area fill (backward compatibility for single-series charts).
+- [`defaultFillOpacity`](#defaultfillopacity): Default fill opacity for series without an explicit opacity (`0..1`).
+- [`defaultLineWidth`](#defaultlinewidth): Default stroke width for series boundary lines in points.
+- [`fillOpacity`](#fillopacity): Fill opacity for area polygons (`0..1`).
 - [`fontFamily`](#fontfamily): Font family for labels
 - [`height`](#height): Chart height.
+- [`inheritDocumentFont`](#inheritdocumentfont): When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 - [`isDecorative`](#isdecorative): Marks the chart as decorative even when altText is set.
 - [`keepWithNext`](#keepwithnext): Keeps this element with the start of its next sibling in vertical flow.
 - [`labelFontSize`](#labelfontsize): Axis label font size.
-- [`lineWidth`](#linewidth): Line thickness.
+- [`legendPosition`](#legendposition): Where to draw the legend: `bottom` (default), `top`, `right`, `inline`, or `none`.
+- [`lineWidth`](#linewidth): Stroke width of the upper area boundary line.
 - [`margin`](#margin): Margin around this element.
 - [`orientation`](#orientation): Controls whether the chart renders with vertical or horizontal orientation.
 - [`references`](#references): Reference lines and bands on the value axis.
 - [`showLegend`](#showlegend): Whether to show a legend for multiple series (default: true).
 - [`showValueLabels`](#showvaluelabels): Whether to show value labels above each data point
 - [`stretchToFit`](#stretchtofit): When true, the chart will stretch to fill the container width.
-- [`svgShapeRendering`](#svgshaperendering): Preferred root `shape-rendering` for standalone SVG export (`*`).
-- [`theme`](#theme): Appearance preset.
+- [`subtitle`](#subtitle): Optional subtitle drawn beneath the title.
+- [`svgShapeRendering`](#svgshaperendering): SVG `shape-rendering` hint (`auto` or `crispEdges`).
+- [`theme`](#theme): Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 - [`title`](#title): Visible title drawn inside the chart.
+- [`valueLabelFormat`](#valuelabelformat): Chart-level number format for value labels when a point did not set its own labelFormat.
+- [`valueLabelPosition`](#valuelabelposition): Value label placement on bar charts: `outside` (default), `inside`, or `auto`.
+- [`valueLabelPrefix`](#valuelabelprefix): Optional prefix prepended to value labels.
+- [`valueLabelSuffix`](#valuelabelsuffix): Optional suffix appended to value labels.
 - [`width`](#width): Chart width.
 - [`xAxis`](#xaxis): Category axis presentation; accepts an AxisOptions instance or literal.
 - [`yAxis`](#yaxis): Value axis presentation; accepts an AxisOptions instance or literal.
@@ -64,7 +79,27 @@ areaColor?: ColorInput | undefined
 
 *optional*
 
-areaColor colour. Accepts a palette token or hex.
+Default colour for series without an explicit colour.
+
+### `areaGradient`
+
+```typescript
+areaGradient?: boolean | undefined
+```
+
+*optional*
+
+Vertical (or horizontal) fade gradient from series colour to near-transparent at the baseline.
+
+### `autoLayout`
+
+```typescript
+autoLayout?: boolean | undefined
+```
+
+*optional*
+
+Enable content-aware dynamic margins based on measured text bounds.
 
 ### `backgroundColor`
 
@@ -76,6 +111,36 @@ backgroundColor?: ColorInput | undefined
 
 Background fill. Accepts a palette token or hex.
 
+### `borderColor`
+
+```typescript
+borderColor?: ColorInput | undefined
+```
+
+*optional*
+
+Optional card border colour.
+
+### `borderRadius`
+
+```typescript
+borderRadius?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border corner radius.
+
+### `borderWidth`
+
+```typescript
+borderWidth?: LengthInput | undefined
+```
+
+*optional*
+
+Optional card border stroke width.
+
 ### `breakAllowed`
 
 ```typescript
@@ -85,6 +150,16 @@ breakAllowed?: boolean | undefined
 *optional*
 
 Whether this element can be split across page boundaries. When false, the element is treated as atomic and will be moved to a new page rather than split. If it doesn't fit on a fresh page either, it renders anyway. Default is true.
+
+### `caption`
+
+```typescript
+caption?: string | undefined
+```
+
+*optional*
+
+Optional source or footnote line drawn at the bottom-left of the chart.
 
 ### `captureName`
 
@@ -96,6 +171,16 @@ captureName?: string | undefined
 
 Optional author-supplied name/key surfaced in the layout snapshot. Unset by default; a future capture API can populate it.
 
+### `clipToPlotArea`
+
+```typescript
+clipToPlotArea?: boolean | undefined
+```
+
+*optional*
+
+Optional clip of plotted series geometry to the plot area; undefined defers to chart family default.
+
 ### `contentDirection`
 
 ```typescript
@@ -105,6 +190,16 @@ contentDirection?: ContentDirectionInput | undefined
 *optional*
 
 Inline progression and paragraph base direction; omitted inherits.
+
+### `curve`
+
+```typescript
+curve?: ChartCurveMode | undefined
+```
+
+*optional*
+
+Curve interpolation mode: `linear` (default), `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`.
 
 ### `data`
 
@@ -124,7 +219,7 @@ defaultFillOpacity?: number | undefined
 
 *optional*
 
-Default fill opacity for all series (can be overridden per series via Style).
+Default fill opacity for series without an explicit opacity (`0..1`).
 
 ### `defaultLineWidth`
 
@@ -134,7 +229,7 @@ defaultLineWidth?: number | undefined
 
 *optional*
 
-Default line width for all series (can be overridden per series via Style).
+Default stroke width for series boundary lines in points.
 
 ### `fillOpacity`
 
@@ -144,7 +239,7 @@ fillOpacity?: number | undefined
 
 *optional*
 
-Opacity for the area fill (backward compatibility for single-series charts).
+Fill opacity for area polygons (`0..1`).
 
 ### `fontFamily`
 
@@ -165,6 +260,16 @@ height?: LengthInput | undefined
 *optional*
 
 Chart height. Accepts a length: `450`, `'12cm'`, or `{ value, unit }`.
+
+### `inheritDocumentFont`
+
+```typescript
+inheritDocumentFont?: boolean | undefined
+```
+
+*optional*
+
+When hosted in BonniePDF, inherit the document's default font family instead of Helvetica.
 
 ### `isDecorative`
 
@@ -196,6 +301,16 @@ labelFontSize?: LengthInput | undefined
 
 Axis label font size. Accepts a length: `9`, `'9pt'`, or `{ value, unit }`.
 
+### `legendPosition`
+
+```typescript
+legendPosition?: ChartLegendPosition | undefined
+```
+
+*optional*
+
+Where to draw the legend: `bottom` (default), `top`, `right`, `inline`, or `none`.
+
 ### `lineWidth`
 
 ```typescript
@@ -204,7 +319,7 @@ lineWidth?: LengthInput | undefined
 
 *optional*
 
-Line thickness. Accepts a length: `2`, `'0.5mm'`, or `{ value, unit }`.
+Stroke width of the upper area boundary line.
 
 ### `margin`
 
@@ -224,7 +339,7 @@ orientation?: ChartOrientation | undefined
 
 *optional*
 
-Controls whether the chart renders with vertical or horizontal orientation. In horizontal mode, categories run along the Y-axis (left) and values along the X-axis (bottom). Setting this on any chart type enables horizontal rendering without needing a separate class.
+Controls whether the chart renders with vertical or horizontal orientation.
 
 ### `references`
 
@@ -266,6 +381,16 @@ stretchToFit?: boolean | undefined
 
 When true, the chart will stretch to fill the container width. The width will be set automatically by the document layout engine.
 
+### `subtitle`
+
+```typescript
+subtitle?: string | undefined
+```
+
+*optional*
+
+Optional subtitle drawn beneath the title.
+
 ### `svgShapeRendering`
 
 ```typescript
@@ -274,17 +399,17 @@ svgShapeRendering?: "crispEdges" | "auto" | undefined
 
 *optional*
 
-Preferred root `shape-rendering` for standalone SVG export (`*`). `undefined` (the default) keeps the SVG default antialiasing, which is required for charts with diagonal lines, arcs, or circles. Axis-aligned charts (bar, grouped bar) override this to `'crispEdges'` so their bars and gridlines snap to the pixel grid instead of softening into blurred edges. Text is governed by `text-rendering`, so it is unaffected either way.
+SVG `shape-rendering` hint (`auto` or `crispEdges`).
 
 ### `theme`
 
 ```typescript
-theme?: "legacy" | "modern" | undefined
+theme?: ChartThemeInput | undefined
 ```
 
 *optional*
 
-Appearance preset. Legacy preserves existing output; modern is opt-in.
+Appearance preset (`legacy`, `modern`, `dark`, `print`) or custom theme definition.
 
 ### `title`
 
@@ -295,6 +420,46 @@ title?: string | undefined
 *optional*
 
 Visible title drawn inside the chart.
+
+### `valueLabelFormat`
+
+```typescript
+valueLabelFormat?: string | undefined
+```
+
+*optional*
+
+Chart-level number format for value labels when a point did not set its own labelFormat.
+
+### `valueLabelPosition`
+
+```typescript
+valueLabelPosition?: ChartValueLabelPosition | undefined
+```
+
+*optional*
+
+Value label placement on bar charts: `outside` (default), `inside`, or `auto`.
+
+### `valueLabelPrefix`
+
+```typescript
+valueLabelPrefix?: string | undefined
+```
+
+*optional*
+
+Optional prefix prepended to value labels.
+
+### `valueLabelSuffix`
+
+```typescript
+valueLabelSuffix?: string | undefined
+```
+
+*optional*
+
+Optional suffix appended to value labels.
 
 ### `width`
 
@@ -309,7 +474,7 @@ Chart width. Accepts a length: `800`, `'20cm'`, or `{ value, unit }`.
 ### `xAxis`
 
 ```typescript
-xAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend">> | undefined
+xAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend" | "autoScale" | "includeZero" | "headroom" | "valueFormat" | "labelOverflow">> | undefined
 ```
 
 *optional*
@@ -319,7 +484,7 @@ Category axis presentation; accepts an AxisOptions instance or literal.
 ### `yAxis`
 
 ```typescript
-yAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend">> | undefined
+yAxis?: AxisOptions | Partial<Pick<AxisOptions, "prefix" | "suffix" | "maxValue" | "minValue" | "stepCount" | "legend" | "showGridLines" | "verticalLegend" | "autoScale" | "includeZero" | "headroom" | "valueFormat" | "labelOverflow">> | undefined
 ```
 
 *optional*

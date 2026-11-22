@@ -32,7 +32,7 @@ Capture a [`LayoutSnapshot`](layout-snapshot.md) of the rendered element tree (t
 ### `embedImages`
 
 ```typescript
-embedImages?: "data-uri" | "external-ref" | "omit" | undefined
+embedImages?: "omit" | "data-uri" | "external-ref" | undefined
 ```
 
 *optional*

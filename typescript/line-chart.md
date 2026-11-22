@@ -14,11 +14,27 @@ new LineChart(options?: LineChartOptions)
 
 ## Properties
 
-- [`defaultLineWidth`](#defaultlinewidth): Default line width for all series (can be overridden per series via Style).
-- [`defaultMarkerRadius`](#defaultmarkerradius): Default marker radius for all series (can be overridden per series via Style).
-- [`defaultShowMarkers`](#defaultshowmarkers): Whether to show data point markers by default (can be overridden per series via Style).
-- [`lineColor`](#linecolor): Line colour.
-- [`sparkline`](#sparkline): Use the chart box for a compact plot without axes, labels or legend.
+- [`curve`](#curve): Default curve interpolation mode (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
+- [`defaultLineWidth`](#defaultlinewidth): Default stroke width for line series in points.
+- [`defaultMarkerFill`](#defaultmarkerfill): Default fill mode of data point markers (`solid` or `hollow`).
+- [`defaultMarkerHaloWidth`](#defaultmarkerhalowidth): Default background-coloured halo width around markers in points.
+- [`defaultMarkerRadius`](#defaultmarkerradius): Default radius of data point markers in points.
+- [`defaultMarkerShape`](#defaultmarkershape): Default geometric shape of data point markers.
+- [`defaultShowMarkers`](#defaultshowmarkers): Whether to draw data point markers by default.
+- [`lineColor`](#linecolor): Default line colour for series without an explicit colour.
+- [`sparkline`](#sparkline): Draws the chart as a compact sparkline without axes, gridlines, or legend.
+- [`sparklineFillOpacity`](#sparklinefillopacity): Optional subtle fill opacity (`0..1`) beneath sparkline curves.
+- [`sparklineHighlightMinMax`](#sparklinehighlightminmax): Highlights minimum (`#e11d48`) and maximum (`#0d9488`) points on sparklines.
+- [`sparklineReferenceValue`](#sparklinereferencevalue): Optional dashed horizontal reference baseline across the sparkline.
+- [`sparklineShowEndpoints`](#sparklineshowendpoints): Draws small endpoint dots at first and last sparkline points.
+
+### `curve`
+
+```typescript
+curve: ChartCurveMode
+```
+
+Default curve interpolation mode (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
 
 ### `defaultLineWidth`
 
@@ -26,7 +42,7 @@ new LineChart(options?: LineChartOptions)
 defaultLineWidth: number
 ```
 
-Default line width for all series (can be overridden per series via Style).
+Default stroke width for line series in points.
 
 Example, from `industry-templates/healthcare/patient-summary`:
 
@@ -34,13 +50,37 @@ Example, from `industry-templates/healthcare/patient-summary`:
 line.defaultLineWidth = 1;
 ```
 
+### `defaultMarkerFill`
+
+```typescript
+defaultMarkerFill: ChartMarkerFill
+```
+
+Default fill mode of data point markers (`solid` or `hollow`).
+
+### `defaultMarkerHaloWidth`
+
+```typescript
+defaultMarkerHaloWidth: number
+```
+
+Default background-coloured halo width around markers in points.
+
 ### `defaultMarkerRadius`
 
 ```typescript
 defaultMarkerRadius: number
 ```
 
-Default marker radius for all series (can be overridden per series via Style).
+Default radius of data point markers in points.
+
+### `defaultMarkerShape`
+
+```typescript
+defaultMarkerShape: ChartMarkerShape
+```
+
+Default geometric shape of data point markers.
 
 ### `defaultShowMarkers`
 
@@ -48,7 +88,7 @@ Default marker radius for all series (can be overridden per series via Style).
 defaultShowMarkers: boolean
 ```
 
-Whether to show data point markers by default (can be overridden per series via Style).
+Whether to draw data point markers by default.
 
 ### `lineColor`
 
@@ -56,7 +96,7 @@ Whether to show data point markers by default (can be overridden per series via 
 lineColor: Color
 ```
 
-Line colour. Accepts a palette token or hex.
+Default line colour for series without an explicit colour.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
@@ -76,10 +116,42 @@ chart.lineColor = Color.fromHex(C_VIOLET);
 sparkline: boolean
 ```
 
-Use the chart box for a compact plot without axes, labels or legend.
+Draws the chart as a compact sparkline without axes, gridlines, or legend.
 
 Example, from `industry-templates/healthcare/patient-summary`:
 
 ```typescript
 line.sparkline = true;
 ```
+
+### `sparklineFillOpacity`
+
+```typescript
+sparklineFillOpacity: number
+```
+
+Optional subtle fill opacity (`0..1`) beneath sparkline curves.
+
+### `sparklineHighlightMinMax`
+
+```typescript
+sparklineHighlightMinMax: boolean
+```
+
+Highlights minimum (`#e11d48`) and maximum (`#0d9488`) points on sparklines.
+
+### `sparklineReferenceValue`
+
+```typescript
+sparklineReferenceValue: number | undefined
+```
+
+Optional dashed horizontal reference baseline across the sparkline.
+
+### `sparklineShowEndpoints`
+
+```typescript
+sparklineShowEndpoints: boolean
+```
+
+Draws small endpoint dots at first and last sparkline points.

@@ -14,9 +14,12 @@ new LollipopChart(options?: LollipopChartOptions)
 
 ## Properties
 
-- [`defaultHeadRadius`](#defaultheadradius): Default head radius for all series (can be overridden per series via Style).
-- [`defaultStemWidth`](#defaultstemwidth): Default stem width for all series (can be overridden per series via Style).
-- [`lollipopColor`](#lollipopcolor): Lollipop colour.
+- [`defaultHeadRadius`](#defaultheadradius): Default radius of lollipop head markers in points.
+- [`defaultMarkerFill`](#defaultmarkerfill): Default marker fill mode (`solid` or `hollow`).
+- [`defaultMarkerHaloWidth`](#defaultmarkerhalowidth): Default background-coloured halo width around lollipop heads in points.
+- [`defaultMarkerShape`](#defaultmarkershape): Default geometric marker shape for lollipop heads.
+- [`defaultStemWidth`](#defaultstemwidth): Default stroke width of lollipop stems in points.
+- [`lollipopColor`](#lollipopcolor): Default stem and head colour for series without an explicit colour.
 
 ### `defaultHeadRadius`
 
@@ -24,7 +27,31 @@ new LollipopChart(options?: LollipopChartOptions)
 defaultHeadRadius: number
 ```
 
-Default head radius for all series (can be overridden per series via Style).
+Default radius of lollipop head markers in points.
+
+### `defaultMarkerFill`
+
+```typescript
+defaultMarkerFill: ChartMarkerFill
+```
+
+Default marker fill mode (`solid` or `hollow`).
+
+### `defaultMarkerHaloWidth`
+
+```typescript
+defaultMarkerHaloWidth: number
+```
+
+Default background-coloured halo width around lollipop heads in points.
+
+### `defaultMarkerShape`
+
+```typescript
+defaultMarkerShape: ChartMarkerShape
+```
+
+Default geometric marker shape for lollipop heads.
 
 ### `defaultStemWidth`
 
@@ -32,7 +59,7 @@ Default head radius for all series (can be overridden per series via Style).
 defaultStemWidth: number
 ```
 
-Default stem width for all series (can be overridden per series via Style).
+Default stroke width of lollipop stems in points.
 
 ### `lollipopColor`
 
@@ -40,7 +67,7 @@ Default stem width for all series (can be overridden per series via Style).
 lollipopColor: Color
 ```
 
-Lollipop colour. Accepts a palette token or hex.
+Default stem and head colour for series without an explicit colour.
 
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 

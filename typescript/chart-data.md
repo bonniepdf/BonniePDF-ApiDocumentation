@@ -15,6 +15,7 @@ new ChartData(options?: ChartDataOptions)
 ## Properties
 
 - [`series`](#series): Multiple data series to display in the chart.
+- [`subtitle`](#subtitle): Optional subtitle displayed beneath the chart title
 - [`title`](#title): Chart title displayed at the top
 - [`xAxis`](#xaxis): X-axis (horizontal) configuration
 - [`yAxis`](#yaxis): Y-axis (vertical) configuration
@@ -25,7 +26,7 @@ new ChartData(options?: ChartDataOptions)
 series: ChartSeries[]
 ```
 
-Multiple data series to display in the chart. Each series can have its own name, color, and data points.
+Multiple data series to display in the chart.
 
 > A list you can change.
 
@@ -40,6 +41,14 @@ Example, from `code-recipes/compliance-archival/attached-data`:
 ```typescript
 data.series = [series];
 ```
+
+### `subtitle`
+
+```typescript
+subtitle: string
+```
+
+Optional subtitle displayed beneath the chart title
 
 ### `title`
 

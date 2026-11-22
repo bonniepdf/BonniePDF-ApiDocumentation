@@ -16,7 +16,7 @@ Import from `@bonniepdf/core`.
 ### `embedImages`
 
 ```typescript
-embedImages: "data-uri" | "external-ref" | "omit"
+embedImages: "omit" | "data-uri" | "external-ref"
 ```
 
 How raster images should be represented. `data-uri` (default) is best for standalone website thumbnails - the SVG carries the image bytes inline and needs no asset coordination. `omit` drops images entirely.

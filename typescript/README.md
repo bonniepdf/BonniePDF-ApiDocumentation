@@ -74,6 +74,7 @@ Every public type in the TypeScript library, grouped by what it is for. Each pag
 | [`LineOptions`](line-options.md) | Options for `Line`. |
 | [`ListElementOptions`](list-element-options.md) | Options common to both list types. |
 | [`ListNumberFormat`](list-number-format.md) | Number format options for ordered lists. |
+| [`OrderedListOptions`](ordered-list-options.md) | Options for `OrderedList`. |
 | [`PageBreakOptions`](page-break-options.md) | Options for `PageBreak`. |
 | [`pageNumber`](page-number.md) | A text element whose {page} and {total} placeholders resolve when the document renders. |
 | [`PageNumberOfOptions`](page-number-of-options.md) | Options for `PageNumberOf`. |
@@ -125,26 +126,49 @@ Every public type in the TypeScript library, grouped by what it is for. Each pag
 | --- | --- |
 | [`AreaChart`](area-chart.md) | Renders one or more data series as filled areas against Cartesian axes. |
 | [`AreaChartOptions`](area-chart-options.md) | Options for `AreaChart`. |
+| [`AxisLabelOverflow`](axis-label-overflow.md) | Overflow handling strategy for dense categorical axis labels. |
 | [`AxisOptionsOptions`](axis-options-options.md) | Options for `AxisOptions`. |
 | [`BarChart`](bar-chart.md) | Renders a data series as vertical or horizontal bars. |
 | [`BarChartOptions`](bar-chart-options.md) | Options for `BarChart`. |
+| [`BulletChart`](bullet-chart.md) | Compact KPI bullet chart with qualitative background bands, primary measure bar, and target marker. |
+| [`BulletChartOptions`](bullet-chart-options.md) | Options for `BulletChart`. |
+| [`BulletRange`](bullet-range.md) | Qualitative background range band on a `BulletChart`. |
 | [`CartesianChartBase`](cartesian-chart-base.md) | Provides shared axis, scale, grid, and label behavior for Cartesian charts. |
 | [`CartesianChartOptions`](cartesian-chart-options.md) | Options common to cartesian charts. |
+| [`ChartAxisTarget`](chart-axis-target.md) | Value axis binding for a series inside a `ComboChart`. |
 | [`ChartBarStyle`](chart-bar-style.md) | Explicit settings override the theme, including a corner radius of zero. |
 | [`ChartBarStyleOptions`](chart-bar-style-options.md) | Optional value-end rounding and opaque linear fill. |
 | [`ChartBase`](chart-base.md) | Provides sizing, styling, accessibility, and canvas helpers shared by all charts. |
 | [`ChartBaseOptions`](chart-base-options.md) | Options common to every chart. |
+| [`ChartCurveMode`](chart-curve-mode.md) | Curve interpolation mode for line and area series. |
 | [`ChartDataOptions`](chart-data-options.md) | Options for `ChartData`. |
+| [`ChartDataPointKind`](chart-data-point-kind.md) | Role of a data point in a waterfall bridge: `delta`, `total`, or `subtotal`. |
 | [`ChartDataPointOptions`](chart-data-point-options.md) | Options for `ChartDataPoint`. |
 | [`ChartDecimal`](chart-decimal.md) | An exact decimal: `digits` scaled by `10^-scale`. |
 | [`ChartElement`](chart-element.md) | Compatibility wrapper that assigns data to a chart before rendering it. |
 | [`ChartElementOptions`](chart-element-options.md) | Options for `ChartElement`. |
+| [`ChartGridLineStyle`](chart-grid-line-style.md) | Gridline stroke style used by a chart theme. |
+| [`ChartLegendPosition`](chart-legend-position.md) | Legend placement relative to the plot area (`bottom`, `top`, `right`, `inline`, or `none`). |
 | [`ChartLinearGradient`](chart-linear-gradient.md) | Opaque two-stop gradient; endpoints are resolved by the chart engine. |
 | [`ChartLinearGradientOptions`](chart-linear-gradient-options.md) | Optional endpoints and coordinate scope for a two-stop gradient. |
+| [`ChartMarkerFill`](chart-marker-fill.md) | Fill mode for data point markers (`solid` or `hollow`). |
+| [`ChartMarkerShape`](chart-marker-shape.md) | Geometric marker shape for data points. |
 | [`ChartOrientation`](chart-orientation.md) | Controls the orientation of a Cartesian chart. |
+| [`ChartPatternFill`](chart-pattern-fill.md) | Pure-vector hatch or dot pattern fill resolved in core for monochrome/PDF/A-1 safety. |
+| [`ChartPatternKind`](chart-pattern-kind.md) | Pure-vector hatch or dot pattern kind for bar fills. |
 | [`ChartReference`](chart-reference.md) | A value-axis line, or a band when endValue is supplied. |
+| [`ChartReferenceLabelPlacement`](chart-reference-label-placement.md) | Placement of a reference annotation label relative to the line or band (`above`, `below`, or `inside`). |
+| [`ChartReferenceLabelPosition`](chart-reference-label-position.md) | Position of a reference annotation label along the line or band (`start`, `center`, or `end`). |
 | [`ChartSeriesOptions`](chart-series-options.md) | Options for `ChartSeries`. |
 | [`ChartSeriesStyleOptions`](chart-series-style-options.md) | Options for `ChartSeriesStyle`. |
+| [`ChartSeriesType`](chart-series-type.md) | Mark type for a series inside a `ComboChart`. |
+| [`ChartStackMode`](chart-stack-mode.md) | Stacking calculation mode (`absolute` values or 100% normalized `percent`). |
+| [`ChartThemeDefinition`](chart-theme-definition.md) | Composable custom theme object extending a built-in preset. |
+| [`ChartThemeInput`](chart-theme-input.md) | Theme preset name or custom `ChartThemeDefinition` override object. |
+| [`ChartThemeName`](chart-theme-name.md) | Built-in chart appearance preset name. |
+| [`ChartValueLabelPosition`](chart-value-label-position.md) | Value label placement relative to bars (`outside`, `inside`, or `auto`). |
+| [`ComboChart`](combo-chart.md) | Renders mixed bar, area, and line series on primary and optional secondary Y axes. |
+| [`ComboChartOptions`](combo-chart-options.md) | Options for `ComboChart`. |
 | [`DotPlotChart`](dot-plot-chart.md) | Renders each data value as a dot positioned along a Cartesian scale. |
 | [`DotPlotChartOptions`](dot-plot-chart-options.md) | Options for `DotPlotChart`. |
 | [`formatChartNumber`](format-chart-number.md) | Formats `value` with `format`. |
@@ -152,6 +176,8 @@ Every public type in the TypeScript library, grouped by what it is for. Each pag
 | [`GroupedBarChartElement`](grouped-bar-chart-element.md) | Compatibility wrapper that assigns data to a grouped bar chart before rendering it. |
 | [`GroupedBarChartElementOptions`](grouped-bar-chart-element-options.md) | Options for `GroupedBarChartElement`. |
 | [`GroupedBarChartOptions`](grouped-bar-chart-options.md) | Options for `GroupedBarChart`. |
+| [`HeatmapChart`](heatmap-chart.md) | 2D categorical matrix heatmap (cohort retention, operational matrices) with WCAG auto-contrast cell values. |
+| [`HeatmapChartOptions`](heatmap-chart-options.md) | Options for `HeatmapChart`. |
 | [`isChartNumberFormat`](is-chart-number-format.md) | True when `format` is in the chart number grammar (`undefined` and `''` mean `G`). |
 | [`LineChart`](line-chart.md) | Renders one or more data series as lines against Cartesian axes. |
 | [`LineChartOptions`](line-chart-options.md) | Options for `LineChart`. |
@@ -159,8 +185,19 @@ Every public type in the TypeScript library, grouped by what it is for. Each pag
 | [`LollipopChartOptions`](lollipop-chart-options.md) | Options for `LollipopChart`. |
 | [`PieChart`](pie-chart.md) | Renders a data series as proportional slices of a circle. |
 | [`PieChartOptions`](pie-chart-options.md) | Options for `PieChart`. |
+| [`PieLegendFormat`](pie-legend-format.md) | Format of legend rows on a `PieChart`. |
+| [`PieSliceLabelMode`](pie-slice-label-mode.md) | Placement of data labels directly on pie slices (`none`, `inside`, or `callout`). |
+| [`ScatterChart`](scatter-chart.md) | Renders continuous numeric X/Y scatter plots with optional area-mapped bubble sizing and OLS linear trendlines. |
+| [`ScatterChartOptions`](scatter-chart-options.md) | Options for `ScatterChart`. |
+| [`ScatterTrendlineMode`](scatter-trendline-mode.md) | Trendline overlay mode for `ScatterChart` (`none` or OLS `linear`). |
+| [`StackedAreaChart`](stacked-area-chart.md) | Renders multiple nonnegative series as cumulative stacked area bands. |
+| [`StackedAreaChartOptions`](stacked-area-chart-options.md) | Options for `StackedAreaChart`. |
+| [`StackedBarChart`](stacked-bar-chart.md) | Renders multiple series stacked on each category, in absolute or 100% normalized mode. |
+| [`StackedBarChartOptions`](stacked-bar-chart-options.md) | Options for `StackedBarChart`. |
 | [`sumChartNumbers`](sum-chart-numbers.md) | The exact sum of `values`, as a decimal (`0.1 + 0.2` is `0.3`). |
 | [`toChartDecimal`](to-chart-decimal.md) | The shortest decimal that round-trips `value`. |
+| [`WaterfallChart`](waterfall-chart.md) | Renders cumulative variance bridges (P&L, cash flow, ARR movement) with delta, subtotal, and total bars. |
+| [`WaterfallChartOptions`](waterfall-chart-options.md) | Options for `WaterfallChart`. |
 
 ## Drawing
 
