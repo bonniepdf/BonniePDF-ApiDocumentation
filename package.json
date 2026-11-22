@@ -1,0 +1,22 @@
+{
+  "name": "bonniepdf-api-documentation",
+  "version": "2026.11.21",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "description": "Browsable site for the BonniePDF API reference",
+  "type": "module",
+  "packageManager": "pnpm@11.22.0",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.9",
+    "astro": "7.4.12",
+    "astro-pagefind": "2.0.1"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  }
+}

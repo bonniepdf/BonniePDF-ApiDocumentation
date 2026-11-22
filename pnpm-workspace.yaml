@@ -1,0 +1,7 @@
+# A workspace of one: keeps pnpm from adopting a parent workspace when this
+# repository is checked out inside a larger one.
+packages:
+  - '.'
+allowBuilds:
+  esbuild: true
+  sharp: false
