@@ -18,11 +18,15 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`DiagnosticCategory`](diagnostic-category.md) | Category of a `Diagnostic` - what subsystem produced it. |
 | [`DiagnosticsCollector`](diagnostics-collector.md) | Collects diagnostics during PDF generation. |
 | [`DiagnosticSeverity`](diagnostic-severity.md) | Severity of a `Diagnostic`. |
+| [`ElementCycleException`](element-cycle-error.md) | Thrown when an element contains itself, directly or through its descendants. |
+| [`NumberFormatter`](format-number.md) | Culture-invariant formatting for numbers printed in documents. |
 | [`HorizontalAlignment`](horizontal-alignment.md) | Horizontal alignment options for layout elements |
 | [`Hyperlink`](hyperlink.md) | Represents a hyperlink annotation in a PDF document. |
 | [`Diagnostic`](i-diagnostic.md) | Structured, non-throwing report of a recoverable issue encountered while generating a PDF - most commonly a font that couldn't be loaded, an image that failed to decode, or a subset operation that fell back to embedding  |
+| [`ImageDecodeException`](image-decode-error.md) | Thrown when image bytes cannot be decoded: the compressed pixel data is corrupt or truncated, or the image is larger than `MaxPixels`. |
 | [`LengthExtensions`](length-extensions.md) | Unit-qualified measurements for object-initializer authoring. |
 | [`MissingGlyphException`](missing-glyph-exception.md) | Raised when text uses a character that no registered font can draw and the document's `MissingGlyphs` is `Throw`. |
+| [`OversizedContentException`](oversized-content-error.md) | Raised when content that cannot split across pages is taller than a page and the document's `OversizedContent` is `Throw`. |
 | [`PageOrientation`](page-orientation.md) | Represents the orientation of a PDF page |
 | [`Point`](point.md) | Represents a 2D point with X and Y coordinates |
 | [`SectionLink`](section-link.md) | A clickable internal cross-reference. |
@@ -40,6 +44,7 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`IElement`](i-element.md) | Interface for all renderable PDF elements |
 | [`IMargin`](i-margin.md) | Interface for elements that support margins |
 | [`IStatefulElement`](i-stateful-element.md) | Interface for elements that support stateful rendering across page boundaries. |
+| [`PageNumber`](page-number.md) | Builds text containing the current page number or total page count. |
 | [`RenderStatus`](render-status.md) | Indicates the result of rendering an element to a page. |
 | [`StatefulElementBase`](stateful-element-base.md) | Base class for stateful PDF elements that support rendering across page boundaries. |
 
@@ -218,7 +223,6 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`DocumentEncryptionExtensions`](document-encryption-extensions.md) | Extension methods for configuring PDF document encryption. |
 | [`DocumentSettingsExtensions`](document-settings-extensions.md) | Extension methods for configuring PDF version, PDF/A, and bookmarks. |
 | [`DocumentSettingsFluentExtensions`](document-settings-fluent-extensions.md) | Fluent extension methods for `DocumentSettings`. |
-| [`ElementCycleException`](element-cycle-exception.md) | Thrown when an element contains itself, directly or through its descendants. |
 | [`ElementExtensions`](element-extensions.md) | Fluent extension methods for building PDF elements with a clean API |
 | [`Ellipse`](ellipse.md) | Draws a filled and optionally stroked ellipse at the current flow position. |
 | [`EmployeeItem`](employee-item.md) | One employee record for prototyping directory and team layouts. |
@@ -240,7 +244,6 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`IContentContainer`](i-content-container.md) | A slot that can hold a single child element. |
 | [`ImageColorSpace`](image-color-space.md) | PDF color space for images |
 | [`ImageCompressionLevel`](image-compression-level.md) | How hard BonniePDF works to shrink the Flate-compressed pixel data of embedded images. |
-| [`ImageDecodeException`](image-decode-exception.md) | Thrown when image bytes cannot be decoded: the compressed pixel data is corrupt or truncated, or the image is larger than `MaxPixels`. |
 | [`ImageExtensions`](image-extensions.md) | Fluent extension methods for images |
 | [`ImageFitMode`](image-fit-mode.md) | How to fit an image within its bounds |
 | [`ImageFormat`](image-format.md) | Supported image formats |
@@ -264,16 +267,13 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`NodeAccessibility`](node-accessibility.md) | Accessibility facts captured for a layout node, mirroring what the tagging pipeline would write into the PDF structure tree for the same element. |
 | [`NodePaint`](node-paint.md) | What an element paints, captured so the compliance preflight can evaluate colour contrast without a second render pass or any inspection of rendered output. |
 | [`NumberFormat`](number-format.md) | Number format options for ordered lists |
-| [`NumberFormatter`](number-formatter.md) | Culture-invariant formatting for numbers printed in documents. |
 | [`OrderedList`](ordered-list.md) | An ordered list element that displays numbered items with various numbering formats |
-| [`OversizedContentException`](oversized-content-exception.md) | Raised when content that cannot split across pages is taller than a page and the document's `OversizedContent` is `Throw`. |
 | [`PaddingExtensions`](padding-extensions.md) | Fluent extension methods for padding |
 | [`Page`](page.md) | Represents a single page in a PDF document |
 | [`PageBreak`](page-break.md) | Forces a page break at the current position in the layout flow. |
 | [`PageContext`](page-context.md) | The page facts a conditional pagination primitive decides on. |
 | [`PageDescriptor`](page-descriptor.md) | Describes a page's configuration and structure. |
 | [`PageDimensions`](page-dimensions.md) | Stores dimension information for a page |
-| [`PageNumber`](page-number-class.md) | Builds text containing the current page number or total page count. |
 | [`PageNumberOf`](page-number-of.md) | Renders the page number on which a named `Section` (or anchored `Heading`) sits - the "see page 42" cross-reference. |
 | [`PageSize`](page-size.md) | The page's dimensions in points, as laid out. |
 | [`PaginationDecision`](pagination-decision.md) | What a pagination primitive decides to do with its child before rendering it on the current page. |
