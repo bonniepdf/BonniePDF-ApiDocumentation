@@ -36,6 +36,18 @@ curve: ChartCurveMode
 
 Default curve interpolation mode (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
 
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s1.curve = 'smooth';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.curve = 'smooth';
+```
+
 ### `defaultLineWidth`
 
 ```typescript
@@ -65,6 +77,18 @@ defaultMarkerHaloWidth: number
 ```
 
 Default background-coloured halo width around markers in points.
+
+Example, from `code-recipes/trend-charts/line-chart`:
+
+```typescript
+chart.defaultMarkerHaloWidth = 1.5;
+```
+
+Example, from `industry-templates/healthcare/patient-summary`:
+
+```typescript
+inrChart.defaultMarkerHaloWidth = 1.5;
+```
 
 ### `defaultMarkerRadius`
 
@@ -101,13 +125,13 @@ Default line colour for series without an explicit colour.
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-lineChart5.lineColor = C_VIOLET;
+s1.lineColor = C_BLUE;
 ```
 
-Example, from `code-recipes/trend-charts/line-chart`:
+Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-chart.lineColor = Color.fromHex(C_VIOLET);
+s2.lineColor = C_TEAL;
 ```
 
 ### `sparkline`
@@ -118,10 +142,16 @@ sparkline: boolean
 
 Draws the chart as a compact sparkline without axes, gridlines, or legend.
 
-Example, from `industry-templates/healthcare/patient-summary`:
+Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-line.sparkline = true;
+s1.sparkline = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.sparkline = true;
 ```
 
 ### `sparklineFillOpacity`
@@ -132,6 +162,18 @@ sparklineFillOpacity: number
 
 Optional subtle fill opacity (`0..1`) beneath sparkline curves.
 
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s1.sparklineFillOpacity = 0.18;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.sparklineFillOpacity = 0.18;
+```
+
 ### `sparklineHighlightMinMax`
 
 ```typescript
@@ -139,6 +181,18 @@ sparklineHighlightMinMax: boolean
 ```
 
 Highlights minimum (`#e11d48`) and maximum (`#0d9488`) points on sparklines.
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s1.sparklineHighlightMinMax = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.sparklineHighlightMinMax = true;
+```
 
 ### `sparklineReferenceValue`
 
@@ -148,6 +202,18 @@ sparklineReferenceValue: number | undefined
 
 Optional dashed horizontal reference baseline across the sparkline.
 
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.sparklineReferenceValue = 78;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s3.sparklineReferenceValue = 60;
+```
+
 ### `sparklineShowEndpoints`
 
 ```typescript
@@ -155,3 +221,15 @@ sparklineShowEndpoints: boolean
 ```
 
 Draws small endpoint dots at first and last sparkline points.
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s1.sparklineShowEndpoints = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+s2.sparklineShowEndpoints = true;
+```

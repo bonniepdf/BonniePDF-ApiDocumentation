@@ -28,6 +28,12 @@ defaultDotRadius: number
 
 Default radius of plotted dots in points.
 
+Example, from `code-recipes/share-ranking-charts/dot-plot-chart`:
+
+```typescript
+chart.defaultDotRadius = 6;
+```
+
 ### `defaultMarkerFill`
 
 ```typescript
@@ -35,6 +41,12 @@ defaultMarkerFill: ChartMarkerFill
 ```
 
 Default marker fill mode (`solid` or `hollow`).
+
+Example, from `code-recipes/share-ranking-charts/dot-plot-chart`:
+
+```typescript
+chart.defaultMarkerFill = 'hollow';
+```
 
 ### `defaultMarkerHaloWidth`
 
@@ -51,6 +63,12 @@ defaultMarkerShape: ChartMarkerShape
 ```
 
 Default geometric marker shape for plotted dots.
+
+Example, from `code-recipes/share-ranking-charts/dot-plot-chart`:
+
+```typescript
+chart.defaultMarkerShape = 'diamond';
+```
 
 ### `dotColor`
 

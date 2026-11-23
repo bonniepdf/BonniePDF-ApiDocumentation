@@ -76,6 +76,12 @@ maxValue: number
 
 Highest value on the value axis. Must be greater than `minValue` when a chart with series is drawn.
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+secAxis.maxValue = 90;
+```
+
 ### `minValue`
 
 ```typescript
@@ -83,6 +89,12 @@ minValue: number
 ```
 
 Lowest value on the value axis (default: 0).
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+secAxis.minValue = 50;
+```
 
 ### `prefix`
 
@@ -116,6 +128,12 @@ suffix: string
 
 Suffix for value labels (e.g., "%", "k")
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+secAxis.suffix = '%';
+```
+
 ### `valueFormat`
 
 ```typescript
@@ -123,6 +141,12 @@ valueFormat: string | undefined
 ```
 
 Number format string (`G`, `F<n>`, `N<n>`, `P<n>`, `C<n>`) for axis tick labels.
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+secAxis.valueFormat = 'F0';
+```
 
 ### `verticalLegend`
 

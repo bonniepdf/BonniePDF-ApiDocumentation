@@ -27,10 +27,16 @@ barStyle: ChartBarStyle
 
 Corner rounding and gradient style applied to grouped bars.
 
+Example, from `code-recipes/comparison-charts/grouped-bar-chart`:
+
+```typescript
+chart.barStyle = { cornerRadius: 4 };
+```
+
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-groupedBarChart4.barStyle = { cornerRadius: 3 };
+printGrouped.barStyle = { cornerRadius: 3 };
 ```
 
 ### `barWidthRatio`

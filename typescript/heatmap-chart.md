@@ -121,6 +121,30 @@ values: readonly (readonly (number | null)[])[]
 
 > A read-only list: read it or loop over it, but it has no `add` or `push`.
 
+Example, from `code-recipes/share-ranking-charts/heatmap-chart`:
+
+```typescript
+chart.values = [
+  [100, 84, 76, 71, 68, 65],
+  [100, 86, 79, 74, 70, null],
+  [100, 88, 82, 77, null, null],
+  [100, 90, 84, null, null, null],
+  [100, 91, null, null, null, null],
+];
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+heatmap.values = [
+  [100, 84, 76, 71, 68, 65],
+  [100, 86, 79, 74, 70, null],
+  [100, 88, 82, 77, null, null],
+  [100, 90, 84, null, null, null],
+  [100, 91, null, null, null, null],
+];
+```
+
 ### `valueSuffix`
 
 ```typescript
@@ -128,6 +152,18 @@ valueSuffix: string
 ```
 
 Suffix appended to cell and legend values.
+
+Example, from `code-recipes/share-ranking-charts/heatmap-chart`:
+
+```typescript
+chart.valueSuffix = '%';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+heatmap.valueSuffix = '%';
+```
 
 ### `xCategories`
 
@@ -139,6 +175,18 @@ Column category labels drawn along the top or bottom axis.
 
 > A read-only list: read it or loop over it, but it has no `add` or `push`.
 
+Example, from `code-recipes/share-ranking-charts/heatmap-chart`:
+
+```typescript
+chart.xCategories = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5'];
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+heatmap.xCategories = ['M0', 'M1', 'M2', 'M3', 'M4', 'M5'];
+```
+
 ### `yCategories`
 
 ```typescript
@@ -148,3 +196,15 @@ yCategories: readonly string[]
 Row category labels drawn along the left axis.
 
 > A read-only list: read it or loop over it, but it has no `add` or `push`.
+
+Example, from `code-recipes/share-ranking-charts/heatmap-chart`:
+
+```typescript
+chart.yCategories = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+heatmap.yCategories = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
+```

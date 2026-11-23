@@ -57,15 +57,10 @@ Example, from `code-recipes/comparison-charts/bar-chart`:
 s.dataPoints = points;
 ```
 
-Example, from `industry-templates/compliance-audit/audit-report`:
+Example, from `code-recipes/trend-charts/scatter-chart`:
 
 ```typescript
-series.dataPoints = order.map((label, i) => {
-  const p = new ChartDataPoint();
-  p.label = label;
-  p.value = counts[i];
-  return p;
-});
+eu.dataPoints = [pt('n1', 120, 14, 12), pt('n2', 240, 21, 22), pt('n3', 360, 29, 34), pt('n4', 480, 41, 48)];
 ```
 
 ### `name`
@@ -76,16 +71,16 @@ name: string
 
 Series name/label used in legends.
 
-Example, from `code-recipes/share-ranking-charts/pie-chart`:
+Example, from `code-recipes/comparison-charts/stacked-bar-chart`:
 
 ```typescript
-series.name = 'Revenue';
+s.name = name;
 ```
 
-Example, from `code-recipes/comparison-charts/grouped-bar-chart`:
+Example, from `code-recipes/comparison-charts/waterfall-chart`:
 
 ```typescript
-clothing.name = 'Clothing';
+s.name = 'ARR';
 ```
 
 ### `seriesType`
@@ -96,6 +91,18 @@ seriesType: ChartSeriesType
 
 Renderer role when used in ComboChart: `bar` (default), `line`, or `area`.
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+revSeries.seriesType = 'bar';
+```
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginSeries.seriesType = 'line';
+```
+
 ### `style`
 
 ```typescript
@@ -104,6 +111,23 @@ style: ChartSeriesStyle
 
 Series-specific styling options.
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginSeries.style = marginStyle;
+```
+
+Example, from `code-recipes/trend-charts/multi-series-line-chart`:
+
+```typescript
+currentYear.style = new ChartSeriesStyle({
+  lineWidth: 2.5,
+  markerShape: 'circle',
+  markerHaloWidth: 1.5,
+  markerRadius: 4.5,
+});
+```
+
 ### `valueAxis`
 
 ```typescript
@@ -111,3 +135,15 @@ valueAxis: ChartAxisTarget
 ```
 
 Value axis binding when used in ComboChart: `primary` (default) or `secondary`.
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+revSeries.valueAxis = 'primary';
+```
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginSeries.valueAxis = 'secondary';
+```

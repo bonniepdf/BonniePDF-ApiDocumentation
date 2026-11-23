@@ -61,8 +61,10 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 
 | Name | What it is |
 | --- | --- |
-| [`AreaChart`](area-chart.md) | Area chart that renders a filled polygon with a line overlay. |
-| [`BarChart`](bar-chart.md) | Bar chart that renders vertical bars with value labels above each bar. |
+| [`AreaChart`](area-chart.md) | Area chart that renders a filled polygon (or curved vertical fade) with a line overlay. |
+| [`BarChart`](bar-chart.md) | Bar chart that renders vertical or horizontal bars with value labels. |
+| [`BulletChart`](bullet-chart.md) | Compact KPI bullet chart with qualitative background bands, primary measure bar, and target marker. |
+| [`BulletRange`](bullet-range.md) | Qualitative background range band on a `BulletChart`. |
 | [`CartesianChartBase`](cartesian-chart-base.md) | Base class for Cartesian charts (charts with X and Y axes). |
 | [`ChartBarStyle`](chart-bar-style.md) | Explicit settings override theme defaults, including a corner radius of zero. |
 | [`ChartBase`](chart-base.md) | Base class for all charts that provides common functionality for drawing charts using the ICanvas interface. |
@@ -70,13 +72,20 @@ Every public type in the .NET library, grouped by what it is for. Each page list
 | [`ChartLinearGradient`](chart-linear-gradient.md) | Opaque two-stop gradient with bar-relative or plot-relative coordinates. |
 | [`ChartOrientation`](chart-orientation.md) | Controls the orientation of a Cartesian chart. |
 | [`ChartReference`](chart-reference.md) | A value-axis line, or a band when an end value is supplied. |
-| [`DotPlotChart`](dot-plot-chart.md) | Dot plot chart that renders circular data points with value labels. |
+| [`ChartThemeDefinition`](chart-theme-definition.md) | Composable custom theme definition extending a built-in chart preset. |
+| [`ComboChart`](combo-chart.md) | Renders mixed bar, area, and line series on primary and optional secondary Y axes. |
+| [`DotPlotChart`](dot-plot-chart.md) | Dot plot chart that renders circular or shaped data points with value labels. |
 | [`ChartNumberFormat`](format-chart-number.md) | Number formatting for chart text: data-point labels, the pie total and the axis ticks. |
 | [`GroupedBarChart`](grouped-bar-chart.md) | Grouped bar chart that renders multiple bars per category. |
 | [`GroupedBarChartElement`](grouped-bar-chart-element.md) | Element that renders a GroupedBarChart to the document. |
-| [`LineChart`](line-chart.md) | Line chart that renders connected data points with straight lines. |
-| [`LollipopChart`](lollipop-chart.md) | Lollipop chart that renders vertical lines (stems) with circular markers (heads). |
-| [`PieChart`](pie-chart.md) | Pie chart that renders pie slices with a legend on the right side. |
+| [`HeatmapChart`](heatmap-chart.md) | 2D categorical matrix heatmap with linear sRGB colour interpolation and WCAG auto-contrast cell values. |
+| [`LineChart`](line-chart.md) | Line chart that renders connected data points with straight, smooth, or stepped lines. |
+| [`LollipopChart`](lollipop-chart.md) | Lollipop chart that renders stems with circular or shaped marker heads. |
+| [`PieChart`](pie-chart.md) | Pie and donut chart with modern theme support, gradient slices, centre totals, and optional callout labels. |
+| [`ScatterChart`](scatter-chart.md) | Renders continuous numeric X/Y scatter plots with optional area-mapped bubble sizing and OLS linear trendlines. |
+| [`StackedAreaChart`](stacked-area-chart.md) | Renders multiple nonnegative series as cumulative stacked area bands. |
+| [`StackedBarChart`](stacked-bar-chart.md) | Renders multiple series stacked per category, in absolute or 100% normalized mode. |
+| [`WaterfallChart`](waterfall-chart.md) | Renders cumulative variance bridges (P&L, cash flow, ARR movement) with delta, subtotal, and total bars. |
 
 ## Drawing
 

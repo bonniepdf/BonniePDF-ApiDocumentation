@@ -36,10 +36,10 @@ Example, from `code-recipes/comparison-charts/chart-showcase`:
 areaChart6.areaColor = C_TEAL;
 ```
 
-Example, from `code-recipes/trend-charts/area-chart`:
+Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-chart.areaColor = Color.fromHex(C_PURPLE);
+darkArea.areaColor = '#38bdf8';
 ```
 
 ### `areaGradient`
@@ -50,6 +50,18 @@ areaGradient: boolean
 
 Vertical (or horizontal) fade gradient from series colour to near-transparent at the baseline.
 
+Example, from `code-recipes/trend-charts/area-chart`:
+
+```typescript
+chart.areaGradient = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+darkArea.areaGradient = true;
+```
+
 ### `curve`
 
 ```typescript
@@ -57,6 +69,18 @@ curve: ChartCurveMode
 ```
 
 Curve interpolation mode: `linear` (default), `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`.
+
+Example, from `code-recipes/trend-charts/area-chart`:
+
+```typescript
+chart.curve = 'smooth';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+darkArea.curve = 'smooth';
+```
 
 ### `defaultFillOpacity`
 
@@ -91,7 +115,7 @@ chart.fillOpacity = 0.3;
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-areaChart6.fillOpacity = 0.3;
+darkArea.fillOpacity = 0.32;
 ```
 
 ### `lineWidth`
@@ -102,8 +126,14 @@ lineWidth: number
 
 Stroke width of the upper area boundary line in points.
 
+Example, from `code-recipes/trend-charts/area-chart`:
+
+```typescript
+chart.lineWidth = 2.5;
+```
+
 Example, from `code-recipes/comparison-charts/chart-showcase`:
 
 ```typescript
-areaChart6.lineWidth = 2.5;
+darkArea.lineWidth = 2.5;
 ```

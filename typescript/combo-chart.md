@@ -50,3 +50,15 @@ secondaryYAxis: AxisOptions | undefined
 ```
 
 Optional right-hand secondary Y axis options for series bound to `secondary`.
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+chart.secondaryYAxis = secAxis;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+combo.secondaryYAxis = { minValue: 50, maxValue: 90, suffix: '%', valueFormat: 'F0' };
+```

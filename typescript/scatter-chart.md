@@ -80,6 +80,18 @@ showTrendline: ScatterTrendlineMode
 
 Optional ordinary least-squares trendline per series (`none` or `linear`).
 
+Example, from `code-recipes/trend-charts/scatter-chart`:
+
+```typescript
+chart.showTrendline = 'linear';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+scatter.showTrendline = 'linear';
+```
+
 ### `showVerticalGridLines`
 
 ```typescript

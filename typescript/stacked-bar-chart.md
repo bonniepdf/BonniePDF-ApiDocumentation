@@ -46,6 +46,18 @@ mode: ChartStackMode
 
 Stacking mode: `absolute` (default) or 100% normalized `percent`.
 
+Example, from `code-recipes/comparison-charts/stacked-bar-chart`:
+
+```typescript
+chart.mode = 'absolute';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedBar.mode = 'absolute';
+```
+
 ### `segmentGap`
 
 ```typescript
@@ -53,6 +65,18 @@ segmentGap: number
 ```
 
 Visual gap between adjacent stacked segments in points.
+
+Example, from `code-recipes/comparison-charts/stacked-bar-chart`:
+
+```typescript
+chart.segmentGap = 1.5;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedBar.segmentGap = 1.5;
+```
 
 ### `showStackTotals`
 
@@ -62,6 +86,18 @@ showStackTotals: boolean
 
 Whether to draw the category total beyond the top of each stacked bar.
 
+Example, from `code-recipes/comparison-charts/stacked-bar-chart`:
+
+```typescript
+chart.showStackTotals = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedBar.showStackTotals = true;
+```
+
 ### `stackTotalFormat`
 
 ```typescript
@@ -69,6 +105,18 @@ stackTotalFormat: string | undefined
 ```
 
 Number format for category stack totals.
+
+Example, from `code-recipes/comparison-charts/stacked-bar-chart`:
+
+```typescript
+chart.stackTotalFormat = 'K0';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedBar.stackTotalFormat = 'K0';
+```
 
 ### `svgShapeRendering`
 

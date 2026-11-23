@@ -11,6 +11,11 @@ Namespace `BonniePDF`.
 - [`Color`](#color): The line or band colour.
 - [`DashPattern`](#dashpattern): Optional alternating dash and gap lengths, in points.
 - [`EndValue`](#endvalue): The second band endpoint.
+- [`Label`](#label): Optional annotation label text for the reference line or band.
+- [`LabelBackgroundColor`](#labelbackgroundcolor): Optional rounded pill background colour behind the annotation label.
+- [`LabelColor`](#labelcolor): Optional annotation label text colour.
+- [`LabelPlacement`](#labelplacement): Placement relative to the line or band: `above`, `below`, or `inside`.
+- [`LabelPosition`](#labelposition): Position along the reference line or band: `start`, `center`, or `end` (default).
 - [`Thickness`](#thickness): Reference line thickness in points.
 - [`Value`](#value): The line value or first band endpoint.
 
@@ -39,6 +44,46 @@ decimal? EndValue { get; set; }
 ```
 
 The second band endpoint.
+
+### `Label`
+
+```csharp
+string Label { get; set; }
+```
+
+Optional annotation label text for the reference line or band.
+
+### `LabelBackgroundColor`
+
+```csharp
+Color? LabelBackgroundColor { get; set; }
+```
+
+Optional rounded pill background colour behind the annotation label.
+
+### `LabelColor`
+
+```csharp
+Color? LabelColor { get; set; }
+```
+
+Optional annotation label text colour.
+
+### `LabelPlacement`
+
+```csharp
+string LabelPlacement { get; set; }
+```
+
+Placement relative to the line or band: `above`, `below`, or `inside`.
+
+### `LabelPosition`
+
+```csharp
+string LabelPosition { get; set; }
+```
+
+Position along the reference line or band: `start`, `center`, or `end` (default).
 
 ### `Thickness`
 

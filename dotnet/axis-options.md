@@ -14,6 +14,10 @@ new AxisOptions()
 
 ## Properties
 
+- [`AutoScale`](#autoscale): Compute nice axis bounds and tick spacing from plotted data using Heckbert scaling.
+- [`Headroom`](#headroom): Fractional headroom (0..0.5) beyond extreme values before rounding; null defers to chart default.
+- [`IncludeZero`](#includezero): Include zero in the auto-scaled range; null defers to the chart family's default.
+- [`LabelOverflow`](#labeloverflow): Category-axis label overflow strategy: `omit` (default), `rotate`, `wrap`, or `auto`.
 - [`Legend`](#legend): Legend/title for this axis (e.g., "Sales (£)", "Month")
 - [`MaxValue`](#maxvalue): Highest value on the value axis.
 - [`MinValue`](#minvalue): Lowest value on the value axis (default: 0).
@@ -21,7 +25,40 @@ new AxisOptions()
 - [`ShowGridLines`](#showgridlines): Whether to show grid lines for this axis
 - [`StepCount`](#stepcount): Number of grid lines/steps on the axis
 - [`Suffix`](#suffix): Suffix for value labels (e.g., "%", "k")
+- [`ValueFormat`](#valueformat): Number format string (`G`, `F<n>`, `N<n>`, `P<n>`, `C<n>`) for axis tick labels.
 - [`VerticalLegend`](#verticallegend): Whether to render the legend vertically (rotated 90 degrees) instead of horizontally.
+
+### `AutoScale`
+
+```csharp
+bool AutoScale { get; set; }
+```
+
+Compute nice axis bounds and tick spacing from plotted data using Heckbert scaling.
+
+### `Headroom`
+
+```csharp
+double? Headroom { get; set; }
+```
+
+Fractional headroom (0..0.5) beyond extreme values before rounding; null defers to chart default.
+
+### `IncludeZero`
+
+```csharp
+bool? IncludeZero { get; set; }
+```
+
+Include zero in the auto-scaled range; null defers to the chart family's default.
+
+### `LabelOverflow`
+
+```csharp
+string LabelOverflow { get; set; }
+```
+
+Category-axis label overflow strategy: `omit` (default), `rotate`, `wrap`, or `auto`.
 
 ### `Legend`
 
@@ -45,7 +82,7 @@ Highest value on the value axis. Must be greater than `MinValue` when a chart wi
 decimal MinValue { get; set; }
 ```
 
-Lowest value on the value axis (default: 0). Values are placed linearly between this and `MaxValue`, and bars, areas and stems start at zero limited to that range.
+Lowest value on the value axis (default: 0).
 
 ### `Prefix`
 
@@ -79,10 +116,18 @@ string Suffix { get; set; }
 
 Suffix for value labels (e.g., "%", "k")
 
+### `ValueFormat`
+
+```csharp
+string ValueFormat { get; set; }
+```
+
+Number format string (`G`, `F<n>`, `N<n>`, `P<n>`, `C<n>`) for axis tick labels.
+
 ### `VerticalLegend`
 
 ```csharp
 bool VerticalLegend { get; set; }
 ```
 
-Whether to render the legend vertically (rotated 90 degrees) instead of horizontally. This is particularly useful for Y-axis labels where vertical orientation saves horizontal space.
+Whether to render the legend vertically (rotated 90 degrees) instead of horizontally.

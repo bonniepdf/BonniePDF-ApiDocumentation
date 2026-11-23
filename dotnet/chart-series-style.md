@@ -14,11 +14,35 @@ new ChartSeriesStyle()
 
 ## Properties
 
+- [`Curve`](#curve): Optional curve interpolation override: `linear`, `smooth`, `stepBefore`, `stepAfter`, or `stepMiddle`.
+- [`DashPattern`](#dashpattern): Optional alternating dash and gap lengths in points for line strokes.
 - [`FillOpacity`](#fillopacity): Fill opacity for Area charts (0.0 to 1.0, default: 0.3f).
 - [`LineWidth`](#linewidth): Line width for Line and Area charts (default: 2f).
+- [`MarkerFill`](#markerfill): Optional marker fill override: `solid` or `hollow`.
+- [`MarkerHaloWidth`](#markerhalowidth): Optional outer halo ring width around markers in points.
 - [`MarkerRadius`](#markerradius): Marker radius for Line, Lollipop, and DotPlot charts (default: 5f).
-- [`ShowMarkers`](#showmarkers): Whether to show circular markers at data points in Line charts (default: true).
+- [`MarkerShape`](#markershape): Optional marker shape override: `circle`, `square`, `diamond`, or `triangle`.
+- [`Pattern`](#pattern): Optional vector hatch/dot pattern fill for monochrome print accessibility.
+- [`ShowMarkers`](#showmarkers): Whether to show markers at data points in Line charts (default: true).
 - [`StemWidth`](#stemwidth): Stem width for Lollipop charts (default: 2f).
+
+### `Curve`
+
+```csharp
+string Curve { get; set; }
+```
+
+Optional curve interpolation override: `linear`, `smooth`, `stepBefore`, `stepAfter`, or `stepMiddle`.
+
+### `DashPattern`
+
+```csharp
+float[] DashPattern { get; set; }
+```
+
+Optional alternating dash and gap lengths in points for line strokes.
+
+> A list you can change.
 
 ### `FillOpacity`
 
@@ -36,6 +60,22 @@ float LineWidth { get; set; }
 
 Line width for Line and Area charts (default: 2f).
 
+### `MarkerFill`
+
+```csharp
+string MarkerFill { get; set; }
+```
+
+Optional marker fill override: `solid` or `hollow`.
+
+### `MarkerHaloWidth`
+
+```csharp
+float? MarkerHaloWidth { get; set; }
+```
+
+Optional outer halo ring width around markers in points.
+
 ### `MarkerRadius`
 
 ```csharp
@@ -44,13 +84,29 @@ float MarkerRadius { get; set; }
 
 Marker radius for Line, Lollipop, and DotPlot charts (default: 5f).
 
+### `MarkerShape`
+
+```csharp
+string MarkerShape { get; set; }
+```
+
+Optional marker shape override: `circle`, `square`, `diamond`, or `triangle`.
+
+### `Pattern`
+
+```csharp
+string Pattern { get; set; }
+```
+
+Optional vector hatch/dot pattern fill for monochrome print accessibility.
+
 ### `ShowMarkers`
 
 ```csharp
 bool ShowMarkers { get; set; }
 ```
 
-Whether to show circular markers at data points in Line charts (default: true).
+Whether to show markers at data points in Line charts (default: true).
 
 ### `StemWidth`
 

@@ -34,6 +34,12 @@ curve: ChartCurveMode | undefined
 
 Optional curve interpolation override for this series (`linear`, `smooth`, `stepBefore`, `stepAfter`, `stepMiddle`).
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginStyle.curve = 'smooth';
+```
+
 ### `dashPattern`
 
 ```typescript
@@ -58,6 +64,12 @@ lineWidth: number
 
 Line thickness for this series.
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginStyle.lineWidth = 2.5;
+```
+
 ### `markerFill`
 
 ```typescript
@@ -66,6 +78,12 @@ markerFill: ChartMarkerFill | undefined
 
 Optional marker fill style override (`solid`, `hollow`).
 
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginStyle.markerFill = 'hollow';
+```
+
 ### `markerHaloWidth`
 
 ```typescript
@@ -73,6 +91,12 @@ markerHaloWidth: number | undefined
 ```
 
 Optional outer halo ring width around markers.
+
+Example, from `code-recipes/comparison-charts/combo-chart`:
+
+```typescript
+marginStyle.markerHaloWidth = 1.5;
+```
 
 ### `markerRadius`
 

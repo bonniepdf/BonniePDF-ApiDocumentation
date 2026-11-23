@@ -47,16 +47,16 @@ barStyle: ChartBarStyle
 
 Corner rounding and gradient style applied to bars.
 
+Example, from `industry-templates/billing-payments/utility-bill`:
+
+```typescript
+chart.barStyle = { cornerRadius: 4 };
+```
+
 Example, from `industry-templates/finance-reporting/financial-dashboard`:
 
 ```typescript
 barChart3.barStyle = { cornerRadius: 4, gradient: { startColor: '#60a5fa', endColor: BLUE, scope: 'bar' } };
-```
-
-Example, from `code-recipes/comparison-charts/chart-showcase`:
-
-```typescript
-barChart3.barStyle = { cornerRadius: 6, gradient: { startColor: '#60a5fa', endColor: C_BLUE, scope: 'bar' } };
 ```
 
 ### `barWidthRatio`

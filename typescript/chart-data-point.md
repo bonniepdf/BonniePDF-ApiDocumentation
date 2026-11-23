@@ -40,6 +40,12 @@ kind: ChartDataPointKind
 
 Point role for WaterfallChart: `delta` (default), `total`, or `subtotal`.
 
+Example, from `code-recipes/comparison-charts/waterfall-chart`:
+
+```typescript
+p.kind = kind;
+```
+
 ### `label`
 
 ```typescript
@@ -88,6 +94,12 @@ size: number | undefined
 
 Positive bubble size magnitude for ScatterChart; ignored by other charts.
 
+Example, from `code-recipes/trend-charts/scatter-chart`:
+
+```typescript
+p.size = size;
+```
+
 ### `value`
 
 ```typescript
@@ -96,16 +108,16 @@ value: number
 
 Numeric value of the point (optional for WaterfallChart `total`/`subtotal` points).
 
+Example, from `code-recipes/trend-charts/scatter-chart`:
+
+```typescript
+p.value = value;
+```
+
 Example, from `code-recipes/comparison-charts/horizontal-bar-chart`:
 
 ```typescript
 p.value = r.value;
-```
-
-Example, from `code-recipes/comparison-charts/bar-chart`:
-
-```typescript
-p.value = values[i];
 ```
 
 ### `x`
@@ -115,3 +127,9 @@ x: number | undefined
 ```
 
 Continuous X coordinate for ScatterChart; ignored by categorical charts.
+
+Example, from `code-recipes/trend-charts/scatter-chart`:
+
+```typescript
+p.x = x;
+```

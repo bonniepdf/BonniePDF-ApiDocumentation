@@ -37,6 +37,18 @@ label: string
 
 Metric label drawn beside the bullet bar.
 
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b1.label = 'Revenue (£k)';
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.label = 'Gross Margin';
+```
+
 ### `maxValue`
 
 ```typescript
@@ -52,6 +64,18 @@ measureColor: Color
 ```
 
 Fill colour of the primary measure bar.
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+b2.measureColor = C_TEAL;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+b3.measureColor = C_VIOLET;
+```
 
 ### `minValue`
 
@@ -79,6 +103,18 @@ Qualitative background bands ordered from lower to upper thresholds.
 
 > A read-only list: read it or loop over it, but it has no `add` or `push`.
 
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b3.ranges = [{ max: 30 }, { max: 55 }, { max: 80 }];
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.ranges = [{ max: 50 }, { max: 75 }, { max: 100 }];
+```
+
 ### `showScale`
 
 ```typescript
@@ -86,6 +122,18 @@ showScale: boolean
 ```
 
 Whether to draw numeric scale ticks beneath or beside the bar.
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b1.showScale = true;
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.showScale = true;
+```
 
 ### `showValueLabel`
 
@@ -95,6 +143,18 @@ showValueLabel: boolean
 
 Whether to draw the formatted value label beside the bar.
 
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b1.showValueLabel = true;
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.showValueLabel = true;
+```
+
 ### `target`
 
 ```typescript
@@ -102,6 +162,18 @@ target: number | undefined
 ```
 
 Optional comparative target value drawn as a perpendicular marker.
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.target = 78;
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b3.target = 60;
+```
 
 ### `targetColor`
 
@@ -119,6 +191,18 @@ value: number
 
 Primary measured KPI value.
 
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.value = 74;
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b3.value = 64;
+```
+
 ### `valueFormat`
 
 ```typescript
@@ -135,6 +219,12 @@ valuePrefix: string
 
 Prefix prepended to formatted values.
 
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b1.valuePrefix = '£';
+```
+
 ### `valueSuffix`
 
 ```typescript
@@ -142,3 +232,15 @@ valueSuffix: string
 ```
 
 Suffix appended to formatted values.
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b1.valueSuffix = 'k';
+```
+
+Example, from `code-recipes/comparison-charts/bullet-chart`:
+
+```typescript
+b2.valueSuffix = '%';
+```

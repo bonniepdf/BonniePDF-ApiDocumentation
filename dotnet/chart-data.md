@@ -15,6 +15,7 @@ new ChartData()
 ## Properties
 
 - [`Series`](#series): Multiple data series to display in the chart.
+- [`Subtitle`](#subtitle): Optional subtitle displayed beneath the chart title
 - [`Title`](#title): Chart title displayed at the top
 - [`XAxis`](#xaxis): X-axis (horizontal) configuration
 - [`YAxis`](#yaxis): Y-axis (vertical) configuration
@@ -25,9 +26,17 @@ new ChartData()
 IList<ChartSeries> Series { get; set; }
 ```
 
-Multiple data series to display in the chart. Each series can have its own name, color, and data points.
+Multiple data series to display in the chart.
 
 > A list you can change.
+
+### `Subtitle`
+
+```csharp
+string Subtitle { get; set; }
+```
+
+Optional subtitle displayed beneath the chart title
 
 ### `Title`
 

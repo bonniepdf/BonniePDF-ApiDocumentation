@@ -27,6 +27,18 @@ curve: ChartCurveMode
 
 Curve interpolation mode for stacked area boundaries.
 
+Example, from `code-recipes/trend-charts/stacked-area-chart`:
+
+```typescript
+chart.curve = 'smooth';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedArea.curve = 'smooth';
+```
+
 ### `defaultFillOpacity`
 
 ```typescript
@@ -50,3 +62,15 @@ mode: ChartStackMode
 ```
 
 Stacking mode: `absolute` (default) or 100% normalized `percent`.
+
+Example, from `code-recipes/trend-charts/stacked-area-chart`:
+
+```typescript
+chart.mode = 'percent';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+stackedArea.mode = 'percent';
+```

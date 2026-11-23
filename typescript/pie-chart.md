@@ -57,6 +57,18 @@ donutHoleRatio: number | undefined
 
 Optional explicit inner/outer radius ratio (`0..0.85`) when `isDonut` is true.
 
+Example, from `code-recipes/share-ranking-charts/pie-chart`:
+
+```typescript
+chart.donutHoleRatio = 0.56;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.donutHoleRatio = 0.56;
+```
+
 ### `isDonut`
 
 ```typescript
@@ -84,6 +96,18 @@ legendFormat: PieLegendFormat
 ```
 
 Format of legend rows (`labelValue`, `labelPercent`, `labelValuePercent`, `labelOnly`).
+
+Example, from `code-recipes/share-ranking-charts/pie-chart`:
+
+```typescript
+chart.legendFormat = 'labelValuePercent';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.legendFormat = 'labelValuePercent';
+```
 
 ### `percentFormat`
 
@@ -135,6 +159,18 @@ sliceBorderWidth: number
 
 Optional background-coloured separator stroke width between slices in points.
 
+Example, from `code-recipes/share-ranking-charts/pie-chart`:
+
+```typescript
+chart.sliceBorderWidth = 1.5;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.sliceBorderWidth = 1.5;
+```
+
 ### `sliceGradient`
 
 ```typescript
@@ -143,6 +179,18 @@ sliceGradient: boolean
 
 Whether to shade each slice with a subtle tonal gradient.
 
+Example, from `code-recipes/share-ranking-charts/pie-chart`:
+
+```typescript
+chart.sliceGradient = true;
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.sliceGradient = true;
+```
+
 ### `sliceLabelMode`
 
 ```typescript
@@ -150,6 +198,18 @@ sliceLabelMode: PieSliceLabelMode
 ```
 
 Direct slice label placement (`none`, `inside`, or `callout`).
+
+Example, from `code-recipes/share-ranking-charts/pie-chart`:
+
+```typescript
+chart.sliceLabelMode = 'callout';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.sliceLabelMode = 'callout';
+```
 
 ### `totalLabel`
 
@@ -183,6 +243,12 @@ Example, from `code-recipes/share-ranking-charts/pie-chart`:
 
 ```typescript
 chart.totalPosition = 'center';
+```
+
+Example, from `code-recipes/comparison-charts/chart-showcase`:
+
+```typescript
+pieChart9.totalPosition = 'center';
 ```
 
 ### `totalValueFormat`

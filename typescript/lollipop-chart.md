@@ -45,6 +45,12 @@ defaultMarkerHaloWidth: number
 
 Default background-coloured halo width around lollipop heads in points.
 
+Example, from `code-recipes/share-ranking-charts/horizontal-lollipop-chart`:
+
+```typescript
+chart.defaultMarkerHaloWidth = 1.5;
+```
+
 ### `defaultMarkerShape`
 
 ```typescript
@@ -52,6 +58,12 @@ defaultMarkerShape: ChartMarkerShape
 ```
 
 Default geometric marker shape for lollipop heads.
+
+Example, from `code-recipes/share-ranking-charts/horizontal-lollipop-chart`:
+
+```typescript
+chart.defaultMarkerShape = 'diamond';
+```
 
 ### `defaultStemWidth`
 

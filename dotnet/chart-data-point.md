@@ -15,9 +15,12 @@ new ChartDataPoint()
 ## Properties
 
 - [`FormattedValue`](#formattedvalue): Gets the formatted value string based on Value and LabelFormat.
+- [`Kind`](#kind): Point role for `WaterfallChart`: `delta` (default), `total`, or `subtotal`.
 - [`Label`](#label): Gets or sets the label for the data point.
-- [`LabelFormat`](#labelformat): Number format for `FormattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`.
+- [`LabelFormat`](#labelformat): Number format for `FormattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`.
+- [`Size`](#size): Positive bubble size magnitude for `ScatterChart`; ignored by other charts.
 - [`Value`](#value): Gets or sets the numeric value for the data point.
+- [`X`](#x): Continuous X coordinate for `ScatterChart`; ignored by categorical charts.
 
 ### `FormattedValue`
 
@@ -28,6 +31,14 @@ string FormattedValue { get; }
 *read-only*
 
 Gets the formatted value string based on Value and LabelFormat.
+
+### `Kind`
+
+```csharp
+string Kind { get; set; }
+```
+
+Point role for `WaterfallChart`: `delta` (default), `total`, or `subtotal`.
 
 ### `Label`
 
@@ -43,7 +54,15 @@ Gets or sets the label for the data point.
 string LabelFormat { get; set; }
 ```
 
-Number format for `FormattedValue`: `G` (default), `F<n>`, `N<n>` or `P<n>`. Culture-invariant; see `ChartNumberFormat`. Anything else throws when the chart is drawn.
+Number format for `FormattedValue`: `G` (default), `F<n>`, `N<n>`, `P<n>` or `K<n>`. Culture-invariant; see `ChartNumberFormat`. Anything else throws when the chart is drawn.
+
+### `Size`
+
+```csharp
+decimal? Size { get; set; }
+```
+
+Positive bubble size magnitude for `ScatterChart`; ignored by other charts.
 
 ### `Value`
 
@@ -52,3 +71,11 @@ decimal Value { get; set; }
 ```
 
 Gets or sets the numeric value for the data point.
+
+### `X`
+
+```csharp
+decimal? X { get; set; }
+```
+
+Continuous X coordinate for `ScatterChart`; ignored by categorical charts.
